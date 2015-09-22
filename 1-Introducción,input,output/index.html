@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Entrada y salida estándar, Scanner, Print Writter, ejercicios</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Unidad 1</h3>
+                    <p>Entrada y salida estándar, Scanner, Print Writter, ejercicios</p>   
+				</section>
+                <section>
+                	<h3>Gui vs Entrada/Salida Estandar</h3>
+                	<img src="img/img1.png" alt="">
+                </section>
+				<section>
+					<h3>Entrada Estandar</h3>
+					<pre>
+						<code data-trim contenteditable>
+Scanner sc = new Scanner(System.in);
+
+//Leer una linea completa
+String a = sc.nextLine(); 
+
+//Leer una palabra hasta un espacio
+String b = sc.next(); 
+
+//Leer un entero
+int a = sc.nextInt(); 						
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Salida Estandar</h3>
+					<pre>
+						<code data-trim contenteditable>
+System.out.print("Texto sin salto de linea");
+System.out.println("Salto de linea");
+double pi = 3.141592654;
+System.out.printf("%.4f\n", pi);
+//3.1416
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>Printf</h3>
+					<pre>
+						<code data-trim contenteditable>
+int a = 5;
+double b = 3.141592654;
+String c = "Hola mundo";
+System.out.printf("Int: %d Double: %f String: %s\n", a,b,c);
+//Int: 5 Double: 3.141593 String: Hola mundo
+
+System.out.printf("%04d %.3f", a,b);
+//0005 3.142
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Estructura de un ejercicio tipo maratón</h3>
+					<p><strong>Enunciado:</strong> Dados dos numeros a y b, retornar a+b.</p>
+					<p><strong>Entradas: </strong>Un numero n indicando el número de casos de prueba. Luego n lineas con dos enteros a y b separados por espacios.</p>
+					<p><strong>Salidas: </strong>Para cada caso imprimir una linea con a+b</p>
+					
+				</section>
+				<section>
+					<table>
+						<tr>
+							<td>Entradas</td>
+							<td>Salidas</td>
+						</tr>
+						<tr>
+							<td>3<br>1 2<br>5 9<br>10 14</td>
+							<td>3<br>14<br>24</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h3>Estructura de la solución</h3>
+					<pre>
+						<code data-trim contenteditable>
+import java.util.*;
+
+public class Main {
+  public static void main (String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    while(n > 0){
+      System.out.println(sc.nextInt()+sc.nextInt());
+      n--;
+    }
+  }
+}
+						</code>
+					</pre>
+				</section>
+        <section>
+          <h3>Tipos de entradas</h3>
+          <h4>Entrada individual</h4>
+          <p>Un solo caso de prueba.</p>
+          <pre>
+            <code data-trim contenteditable>
+Scanner sc = new Scanner(System.in);
+System.out.println(sc.nextInt()+sc.nextInt());
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>Número de casos de prueba</h4>
+          <p>Primero se indica cuantos casos de prueba se evaluaran, y posteriormente se indica cada caso.</p>
+          <pre>
+            <code data-trim contenteditable>
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+while(n > 0){
+  System.out.println(sc.nextInt()+sc.nextInt());
+  n--;
+}
+
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>EOF</h4>
+          <p>Se evaluan varios casos de prueba, pero no se indica cuantos. El programa debe leer mientras aun queden datos por evaluar.</p>
+          <pre>
+            <code data-trim contenteditable>
+Scanner sc = new Scanner(System.in);
+while(sc.hasNext()){
+  System.out.println(sc.nextInt()+sc.nextInt());
+}
+            </code>
+          </pre>
+        </section>
+				<section>
+					<h3>Optimizando Scanner</h3>
+					<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/NoteBook/java/Bonus:%20Input%20Output/Scanner.java">https://github.com/Meyito/UFPS-ProgramacionCompetitiva</a>
+				</section>
+        <section>
+          <h3>Scanner vs BufferedReader</h3>
+          <img src="img/img2.png" alt="">
+        </section>
+				<section>
+					<h3>¿Como usarlo?</h3>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.*;
+import java.io.*;
+
+public class Main {
+  public static void main (String[] args) throws IOException{
+    Scanner sc = new Scanner();
+    int a = Integer.parseInt(sc.next());
+    int b = Integer.parseInt(sc.next());
+    System.out.println(a+b);
+  }
+  static class Scanner{
+    //Copiar código del link
+  }
+}
+            </code>
+          </pre>
+				</section>
+        <section>
+          <h3>Scanner Optimizado: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>nextLine()</td>
+              <td>Lee el renglón entero hasta llegar a un salto de linea. Retorna un string.</td>
+            </tr>
+            <tr>
+              <td>next()</td>
+              <td>Lee de la entrada hasta encontrar un espacio, un salto de linea. Retorna un string.</td>
+            </tr>
+            <tr>
+              <td>hasNext()</td>
+              <td>Indica si hay mas datos esperando por ser leídos. Retorna un boolean.</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>Optimizar Salidas</h3>
+          <pre>
+            <code data-trim contenteditable>
+PrintWriter bw = new PrintWriter(System.out);
+bw.print("Texto");
+bw.println("Texto");
+bw.printf("Texto", parametro);
+
+bw.flush(); 
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>¡Resolvamos un problema!</h3>
+          <p>G - Extreme Sort</p>
+          <a href="http://gcpc.nwerc.eu/problemset_2015.pdf">http://gcpc.nwerc.eu/problemset_2015.pdf</a>
+        </section>
+        <section>
+          <p>John likes sorting algorithms very much. He has studied quicksort, merge sort, radix sort, and
+many more.</p>
+          <p>A long time ago he has written a lock-free parallel string sorting program. It was a combination
+of burstsort and multi-key quicksort. To implement burstsort you need to build a tree of buckets.
+For each input string you walk through the tree and insert part of the string into the right bucket.
+When a bucket fills up, it "bursts" and becomes a new subtree (with new buckets).</p>
+        </section>
+        <section>
+          <img src="img/img3.png" alt="">
+        </section>
+        <section>
+          <p>Well, enough about the past. Today John is playing with sorting algorithms again. This time it’s
+numbers. He has an idea for a new algorithm, “extreme sort”. It’s extremely fast, performance
+levels are OVER NINETHOUSAND. Before he tells anyone any details, he wants to make sure
+that it works correctly.</p>
+          <p>Your task is to help him and verify that the so-called extreme property holds after the first phase
+of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p>
+        </section>
+        <section>
+          <img src="img/img4.png" alt="">
+          <p><strong>Input:</strong> The first line contains a single integer N (1 ≤ N ≤ 1024). The second line contains N integers a1 a2 . . . aN (1 ≤ ai ≤ 1024).</p>
+          <p><strong>Output:</strong>Print one line of output containing “yes” if the extreme property holds for the given input, “no” otherwise</p>
+        </section>
+        <section>
+          <table>
+            <tr>
+              <th>Input</th>
+              <th>Output</th>
+            </tr>
+            <tr>
+              <td>2<br>1 2</td>
+              <td>yes</td>
+            </tr>
+            <tr>
+              <td>4<br>2 1 3 4</td>
+              <td>no</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>Solución</h3>
+          <pre>
+            <code data-trim contenteditable>
+Scanner sc = new Scanner();
+PrintWriter bw = new PrintWriter(System.out);
+    
+int N, anterior, actual;
+boolean flag = true;
+    
+N = Integer.parseInt(sc.next());
+anterior = Integer.parseInt( sc.next() );
+
+for(int i = 1; i &lt;N; i++){
+  actual = Integer.parseInt( sc.next() );
+  if(actual &lt; anterior){
+    flag = false;
+  }
+  anterior = actual;
+}
+if(flag){
+  bw.println("yes");
+}else{
+  bw.println("no");
+}
+bw.flush();
+            </code>
+          </pre>
+        </section>
+        <section>
+        	<h3>Ejercicios propuestos</h3>
+        	<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md">https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md</a>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
