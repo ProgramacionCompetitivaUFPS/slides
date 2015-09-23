@@ -4,7 +4,7 @@ Presentaciones de las diferentes temáticas tratadas en el grupo.
 
 Estas presentaciones son proyectadas y explicadas semanalmente, dejando al final ejercicios propuestos sobre los temas vistos. Una vez realizada la charla semanal, la presentación es puesta a disposición del público, y puede visualizarse en cualquier navegador web moderno web o movil.
 
-Todos los slides son realizados con la libreria de javascript llamada [Reveal.js](https://github.com/hakimel/reveal.js) de [Hakim El Hattab](http://lab.hakim.se/reveal-js/#/) compartida bajo licencia [MIT](https://github.com/hakimel/reveal.js/blob/master/LICENSE).
+Todos los slides son realizados con la libreria de javascript llamada Reveal.js de Hakim [apellido] compartida bajo licencia [insertar licencia].  
 
 Las presentaciones contienen diseño estandarizado. El diseño puede encontrarse y utilizarse desde la carpeta "plantilla presentación", la cual contiene todos los assets gráficos y un index.html listo para ser editado. 
 
@@ -21,4 +21,7 @@ Para crear sus propias presentaciones, editar de la siguiente manera el index.ht
 
 Si la presentación creada es subida a este repositorio, para evitar duplicaciones de contenido, la presentación debe estar en una carpeta directamente en la rama master, y esta carpeta debe contener solo el index.html y la carpeta img (sin los logos institucionales incluidos en la plantilla). Del mismo modo, debe editar todos los enlaces en el html hacia las carpetas lib, plugin, js y css, anteponiendo ../assets/
 
-Para mayores personalizaciones sobre la plantilla o sobre la libreria, diríjase a la documentación de [reveal.js](https://github.com/hakimel/reveal.js).
+Para mayores personalizaciones sobre la plantilla o sobre la libreria, diríjase a la documentación de reveal.js
+
+
+
