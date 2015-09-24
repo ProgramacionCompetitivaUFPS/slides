@@ -48,7 +48,6 @@
                     <li>Colas</li>
                     <li>TreeSet</li>
                     <li>HashMap</li>
-                    <li>Utilidades</li>
                     <li>Ejercicios Propuestos</li>
                   </ul>
                 </section>
@@ -194,7 +193,6 @@ System.out.println(datos[0] [1]);
           <p>
             La cantidad de elementos a almacenar es <strong>variable</strong>.
           </p>
-
         </section>
 
         <section>
@@ -202,10 +200,7 @@ System.out.println(datos[0] [1]);
             <code data-trim contenteditable>
 import java.util.ArrayList;
 
-/*
-Declaración de un ArrayList
-ArrayList&lt;tipo_dato&gt; nombre=new ArrayList&lt;tipo_dato&gt;();
-*/
+//Declaración de un ArrayList
 
 ArrayList&lt;Integer&gt; datos=new ArrayList&lt;Integer&gt;();
 ArrayList&lt;Double&gt; numeros=new ArrayList&lt;Double&gt;();
@@ -307,7 +302,7 @@ for(int j=10; j>0; j--){
     
 datos.set(5, 13);
     
-for(int j=0; j<10; j++){
+for(int j=0; j&lt;10; j++){
   System.out.print(datos.get(j)+" - ");
 }
 System.out.println();
@@ -352,6 +347,193 @@ Collections.fill(datos, 6);
           </pre>
         </section>
 
+        <section>
+          <h3>Pilas (Stack)</h3>
+          <p>Son contenedores dinámicos que poseen un comportamiento <strong>LIFO</strong> (Last
+            In First Out), y por lo tanto solo se pueden insertar y eliminar elementos
+            del final de la estructura.</p>
+        </section>
+
+        <section>
+          <img src="img/pilas.png" alt="">
+          <img src="img/pilas2.png" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.Stack;
+
+//Declaración de una Pila
+
+Stack&lt;Integer&gt; pila=new Stack&lt;Integer&gt;();
+Stack&lt;String&gt; nombres=new Stack&lt;String&gt;();
+Stack&lt;Float&gt; numeros=new Stack&lt;Float&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Stack: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>empty()</td>
+              <td>Retorna un <i>boolean</i> que indica si la <strong>pila</strong> se encuentra vacia.</td>
+            </tr>
+            <tr>
+              <td>peek()</td>
+              <td>Retorna el elemento del tope de la <strong>Pila</strong>.</td>
+            </tr>
+            <tr>
+              <td>pop()</td>
+              <td>Retorna y elimina el elemento del tope de la <strong>Pila</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>Stack: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>push(data)</td>
+              <td>Inserta el elemento <strong>data</strong> en el tope de la  <strong>Pila</strong>.</td>
+            </tr>
+            <tr>
+              <td>search(data)</td>
+              <td>Retorna la posicion en la que se encuentra el elemento <strong>data</strong> contando desde el tope de la <strong>Pila</strong>.</td>
+            </tr>
+          </table>
+        </section> 
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+
+Stack&lt;Integer&gt; pila=new Stack&lt;Integer&gt;();
+
+for(int i=0; i&lt;10; i++){
+  pila.push(i);
+}
+    
+System.out.println(pila.peek());
+/*Salida: ¿? */
+
+System.out.println(pila.pop());
+/*Salida: ¿? */
+
+System.out.println(pila.pop());
+/*Salida: 8 */
+
+System.out.println(pila.search(7));
+/*Salida: ¿? */
+
+System.out.println(pila.search(2));
+/*Salida: 6 */
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Colas (Queue)</h3>
+          <p>Son contenedores dinámicos que poseen un comportamiento <strong>FIFO</strong> (First
+            In First Out), y por lo tanto solo se pueden insertar elementos al final y eliminar elementos
+            del principio de la estructura.</p>
+        </section>
+
+        <section>
+          <img src="img/cola.gif" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.LinkedList;
+import java.util.Queue;
+
+//Declaración de una Cola
+
+Queue&lt;Integer&gt; cola=new LinkedList&lt;Integer&gt;();
+Queue&lt;String&gt; nombres=new LinkedList&lt;String&gt;();
+Queue&lt;Float&gt; numeros=new LinkedList&lt;Float&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Stack: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>empty()</td>
+              <td>Retorna un <i>boolean</i> que indica si la <strong>pila</strong> se encuentra vacia.</td>
+            </tr>
+            <tr>
+              <td>peek()</td>
+              <td>Retorna el elemento del tope de la <strong>Pila</strong>.</td>
+            </tr>
+            <tr>
+              <td>pop()</td>
+              <td>Retorna y elimina el elemento del tope de la <strong>Pila</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>Stack: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>push(data)</td>
+              <td>Inserta el elemento <strong>data</strong> en el tope de la  <strong>Pila</strong>.</td>
+            </tr>
+            <tr>
+              <td>search(data)</td>
+              <td>Retorna la posicion en la que se encuentra el elemento <strong>data</strong> contando desde el tope de la <strong>Pila</strong>.</td>
+            </tr>
+          </table>
+        </section> 
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+
+Stack&lt;Integer&gt; pila=new Stack&lt;Integer&gt;();
+
+for(int i=0; i&lt;10; i++){
+  pila.push(i);
+}
+    
+System.out.println(pila.peek());
+/*Salida: ¿? */
+
+System.out.println(pila.pop());
+/*Salida: ¿? */
+
+System.out.println(pila.pop());
+/*Salida: 8 */
+
+System.out.println(pila.search(7));
+/*Salida: ¿? */
+
+System.out.println(pila.search(2));
+/*Salida: 6 */
+            </code>
+          </pre>
+        </section>
 
        	<section>
 					<h3>Optimizando Scanner</h3>
@@ -359,93 +541,6 @@ Collections.fill(datos, 6);
 				</section>
        
        
-        <section>
-          <h3>Optimizar Salidas</h3>
-          <pre>
-            <code data-trim contenteditable>
-PrintWriter bw = new PrintWriter(System.out);
-bw.print("Texto");
-bw.println("Texto");
-bw.printf("Texto", parametro);
-
-bw.flush(); 
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h3>¡Resolvamos un problema!</h3>
-          <p>G - Extreme Sort</p>
-          <a href="http://gcpc.nwerc.eu/problemset_2015.pdf">http://gcpc.nwerc.eu/problemset_2015.pdf</a>
-        </section>
-        <section>
-          <p>John likes sorting algorithms very much. He has studied quicksort, merge sort, radix sort, and
-many more.</p>
-          <p>A long time ago he has written a lock-free parallel string sorting program. It was a combination
-of burstsort and multi-key quicksort. To implement burstsort you need to build a tree of buckets.
-For each input string you walk through the tree and insert part of the string into the right bucket.
-When a bucket fills up, it "bursts" and becomes a new subtree (with new buckets).</p>
-        </section>
-        <section>
-          <img src="img/img3.png" alt="">
-        </section>
-        <section>
-          <p>Well, enough about the past. Today John is playing with sorting algorithms again. This time it’s
-numbers. He has an idea for a new algorithm, “extreme sort”. It’s extremely fast, performance
-levels are OVER NINETHOUSAND. Before he tells anyone any details, he wants to make sure
-that it works correctly.</p>
-          <p>Your task is to help him and verify that the so-called extreme property holds after the first phase
-of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p>
-        </section>
-        <section>
-          <img src="img/img4.png" alt="">
-          <p><strong>Input:</strong> The first line contains a single integer N (1 ≤ N ≤ 1024). The second line contains N integers a1 a2 . . . aN (1 ≤ ai ≤ 1024).</p>
-          <p><strong>Output:</strong>Print one line of output containing “yes” if the extreme property holds for the given input, “no” otherwise</p>
-        </section>
-        <section>
-          <table>
-            <tr>
-              <th>Input</th>
-              <th>Output</th>
-            </tr>
-            <tr>
-              <td>2<br>1 2</td>
-              <td>yes</td>
-            </tr>
-            <tr>
-              <td>4<br>2 1 3 4</td>
-              <td>no</td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h3>Solución</h3>
-          <pre>
-            <code data-trim contenteditable>
-Scanner sc = new Scanner();
-PrintWriter bw = new PrintWriter(System.out);
-    
-int N, anterior, actual;
-boolean flag = true;
-    
-N = Integer.parseInt(sc.next());
-anterior = Integer.parseInt( sc.next() );
-
-for(int i = 1; i &lt;N; i++){
-  actual = Integer.parseInt( sc.next() );
-  if(actual &lt; anterior){
-    flag = false;
-  }
-  anterior = actual;
-}
-if(flag){
-  bw.println("yes");
-}else{
-  bw.println("no");
-}
-bw.flush();
-            </code>
-          </pre>
-        </section>
         <section>
         	<h3>Ejercicios propuestos</h3>
         	<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md">https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md</a>
