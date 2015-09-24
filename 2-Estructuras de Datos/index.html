@@ -47,7 +47,7 @@
                     <li>Pilas</li>
                     <li>Colas</li>
                     <li>TreeSet</li>
-                    <li>HashMap</li>
+                    <li>TreeMap</li>
                     <li>Ejercicios Propuestos</li>
                   </ul>
                 </section>
@@ -468,41 +468,41 @@ Queue&lt;Float&gt; numeros=new LinkedList&lt;Float&gt;();
         </section>
 
         <section>
-          <h3>Stack: Métodos</h3>
+          <h3>Queue: Métodos</h3>
           <table>
             <tr>
               <th>Método</th>
               <th>Función</th>
             </tr>
             <tr>
-              <td>empty()</td>
-              <td>Retorna un <i>boolean</i> que indica si la <strong>pila</strong> se encuentra vacia.</td>
+              <td>add(data)</td>
+              <td>Inserta el elemento <strong>data</strong> al final de la <strong>Cola</strong>.</td>
             </tr>
             <tr>
               <td>peek()</td>
-              <td>Retorna el elemento del tope de la <strong>Pila</strong>.</td>
+              <td>Retorna el elemento del inicio de la <strong>Cola</strong>.</td>
             </tr>
             <tr>
-              <td>pop()</td>
-              <td>Retorna y elimina el elemento del tope de la <strong>Pila</strong>.</td>
+              <td>poll()</td>
+              <td>Retorna y elimina el elemento del inicio de la <strong>Cola</strong>.</td>
             </tr>
           </table>
         </section>
 
         <section>
-          <h3>Stack: Métodos</h3>
+          <h3>Queue: Métodos</h3>
           <table>
             <tr>
               <th>Método</th>
               <th>Función</th>
             </tr>
             <tr>
-              <td>push(data)</td>
-              <td>Inserta el elemento <strong>data</strong> en el tope de la  <strong>Pila</strong>.</td>
+              <td>isEmpty()</td>
+              <td>Retorna un <i>boolean</i> que indica si la <strong>Cola</strong> se encuentra vacia.</td>
             </tr>
             <tr>
-              <td>search(data)</td>
-              <td>Retorna la posicion en la que se encuentra el elemento <strong>data</strong> contando desde el tope de la <strong>Pila</strong>.</td>
+              <td>size()</td>
+              <td>Retorna la cantidad de elementos que se encuentran en la <strong>Cola</strong>.</td>
             </tr>
           </table>
         </section> 
@@ -511,39 +511,283 @@ Queue&lt;Float&gt; numeros=new LinkedList&lt;Float&gt;();
           <pre>
             <code data-trim contenteditable>
 
-Stack&lt;Integer&gt; pila=new Stack&lt;Integer&gt;();
-
+Queue&lt;Integer&gt; cola = new LinkedList&lt;Integer&gt;();
+    
+System.out.println(cola.size());
+/*Salida: 0*/
+    
 for(int i=0; i&lt;10; i++){
-  pila.push(i);
+  cola.add(i);
 }
     
-System.out.println(pila.peek());
-/*Salida: ¿? */
+System.out.println(cola.peek());
+/*Salida: 0*/
 
-System.out.println(pila.pop());
-/*Salida: ¿? */
+System.out.println(cola.poll());
+/*Salida: ¿?*/
 
-System.out.println(pila.pop());
-/*Salida: 8 */
-
-System.out.println(pila.search(7));
-/*Salida: ¿? */
-
-System.out.println(pila.search(2));
-/*Salida: 6 */
+System.out.println(cola.poll());
+/*Salida: ¿?*/
             </code>
           </pre>
         </section>
 
-       	<section>
-					<h3>Optimizando Scanner</h3>
-					<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/NoteBook/java/Bonus:%20Input%20Output/Scanner.java">https://github.com/Meyito/UFPS-ProgramacionCompetitiva</a>
-				</section>
-       
+        <section>
+          <h3>TreeSet</h3>
+          <p>Un Arbol Binario de Busqueda Balanceado es un manera de <strong>organizar</strong> datos. Nos permite realizar operaciones de búsqueda, inserción y borrados de manera eficiente.</p>
+        </section>
+
+        <section>
+          <img src="img/bst.png" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.TreeSet;
+
+//Declaración de un TreeSet
+
+TreeSet&lt;Integer&gt; tree=new TreeSet&lt;Integer&gt;();
+TreeSet&lt;String&gt; nombres=new TreeSet&lt;String&gt;();
+TreeSet&lt;Character&gt; numeros=new TreeSet&lt;Character&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>add(data)</td>
+              <td>Inserta el elemento <strong>data</strong> en el <strong>TreeSet</strong>.</td>
+            </tr>
+            <tr>
+              <td>clear()</td>
+              <td>Elimina todos los elementos del <strong>TreeSet</strong>.</td>
+            </tr>
+            <tr>
+              <td>contains(data)</td>
+              <td>Retorna un <i>boolean</i> que indica si el elemento <strong>data</strong> se encuentra en el <strong>TreeSet</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>first()</td>
+              <td>Retorna el elemento más pequeño del <strong>TreeSet</strong>.</td>
+            </tr>
+            <tr>
+              <td>isEmpty()</td>
+              <td>Retorna un <i>boolean</i> que indica si el <strong>TreeSet</strong> se encuentra vacio.</td>
+            </tr>
+             <tr>
+              <td>last()</td>
+              <td>Retorna el elemento más grande del <strong>TreeSet</strong>.</td>
+            </tr>
+          </table>
+        </section> 
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>pollFirst()</td>
+              <td>Retorna y elimina el elemento más pequeño del <strong>TreeSet</strong>.</td>
+            </tr>
+            <tr>
+              <td>pollLast()</td>
+              <td>Retorna y elimina el elemento más grande del <strong>TreeSet</strong>.</td>
+            </tr>
+            <tr>
+              <td>remove(data)</td>
+              <td>Elimina el elemento <strong>data</strong> del <strong>TreeSet</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>size()</td>
+              <td>Retorna el número de elementos del <strong>TreeSet</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+
+TreeSet&lt;Integer&gt; tree=new TreeSet&lt;Integer&gt;();
+    
+System.out.println(tree.size());
+/*Salida: 0*/
+    
+for(int i=0; i&lt;10; i++){
+  tree.add(i);
+}
+    
+System.out.println(tree.contains(15));
+/*Salida: false*/
+
+System.out.println(tree.pollFirst());
+/*Salida: 0*/
+
+System.out.println(tree.pollLast());
+/*Salida: 9*/
+
+System.out.println(tree.first());
+/*Salida: ¿?*/
+
+System.out.println(tree.last());
+/*Salida: ¿?*/
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>TreeMap</h3>
+          <p>Un Arbol Binario de Busqueda Balanceado es un manera de <strong>organizar</strong> datos. A diferencia del <i>TreeSet</i>, el <i>TreeMap</i> nos permite almacenar pares de <strong>Clave-Valor</strong>.</p>
+        </section>
+
+        <section>
+          <img src="img/pair.jpg" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.TreeMap;
+
+//Declaración de un TreeMap
+
+TreeMap&lt;Integer, String&gt; tree=new TreeMap&lt;Integer, String&gt;();
+TreeMap&lt;String, String&gt; nombres=new TreeMap&lt;String, String&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>TreeMap: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>clear()</td>
+              <td>Elimina todos los elementos del <strong>TreeMap</strong>.</td>
+            </tr>
+            <tr>
+              <td>containsKey(key)</td>
+              <td>Retorna un <i>boolean</i> que indica si existe un elemento con la clave <strong>key</strong> dentro del <strong>TreeMap</strong>.</td>
+            </tr>
+            <tr>
+              <td>containsValue(value)</td>
+              <td>Retorna un <i>boolean</i> que indica si existe una o mas claves con el valor <strong>value</strong> dentro del <strong>TreeMap</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>TreeMap: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>firstKey()</td>
+              <td>Retorna la <i>clave</i> más pequeña del <strong>TreeMap</strong>.</td>
+            </tr>
+            <tr>
+              <td>get(key)</td>
+              <td>Retorna el <i>valor</i> asociado a la clave <strong>key</strong> del <strong>TreeMap</strong>.</td>
+            </tr>
+             <tr>
+              <td>lastKey()</td>
+              <td>Retorna la <i>clave</i> más grande del <strong>TreeMap</strong>.</td>
+            </tr>
+          </table>
+        </section> 
+
+        <section>
+          <h3>TreeMap: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>put(key, value)</td>
+              <td>Asocia el valor <strong>value</strong> a la clave <strong>key</strong> y los inserta al <strong>TreeMap</strong>.</td>
+            </tr>
+            <tr>
+              <td>remove(key)</td>
+              <td>Retorna el <i>valor</i> y elimina el par asociado a la clave <strong>key</strong> del <strong>TreeMap</strong>.</td>
+            </tr>
+            <tr>
+              <td>size()</td>
+              <td>Retorna el número de pares <i>clave/valor</i> que se encuentran en el <strong>TreeMap</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+
+TreeMap&lt;Integer, String&gt; tree=new TreeMap&lt;Integer, String&gt;();
+
+tree.put(1150990, "Angie Melissa");
+tree.put(1150972, "Gerson Yesid");
+tree.put(11509, "Cristhian Leonardo");
+    
+System.out.println(tree.size());
+/*Salida: 3*/
+
+System.out.println(tree.containsKey(1150972));
+/*Salida: true*/
+
+System.out.println(tree.containsValue("David"));
+/*Salida: false*/
+
+System.out.println(tree.firstKey());
+/*Salida: 11509*/
+
+System.out.println(tree.lastKey());
+/*Salida: 1150990*/
+
+System.out.println(tree.get(1150990));
+/*Salida: ¿?*/
+            </code>
+          </pre>
+        </section>     
        
         <section>
         	<h3>Ejercicios propuestos</h3>
-        	<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md">https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md</a>
+        	<a href="https://github.com/ProgramacionCompetitivaUFPS/Syllabus/blob/master/Ejercicios%20Propuestos/Estructuras%20de%20datos.md">https://github.com/ProgramacionCompetitivaUFPS/Syllabus</a>
         </section>
 			</div>
 
