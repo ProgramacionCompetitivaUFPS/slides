@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Estructuras de Datos</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Unidad 2</h3>
+                    <p>Estructuras de Datos, Ejercicios</p>   
+				</section>
+
+        <section>
+          <p>Una Estructura de Datos es un medio de <strong>almacenar</strong>
+            y <strong>organizar</strong> datos.
+          </p>
+        </section>
+                <section>
+                	<ul>
+                    <li>Arreglos</li>
+                    <li>ArrayList</li>
+                    <li>Pilas</li>
+                    <li>Colas</li>
+                    <li>TreeSet</li>
+                    <li>HashMap</li>
+                    <li>Utilidades</li>
+                    <li>Ejercicios Propuestos</li>
+                  </ul>
+                </section>
+
+        <section>
+          <h3>Arreglos</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>fija</strong>.
+          </p>
+
+        </section>
+
+        <section>
+          <img src="img/arreglo.jpg" alt="">
+        </section>
+
+				<section>
+					<pre>
+						<code data-trim contenteditable>
+
+/*
+Declaración de un arreglo
+tipo_dato nombre [];
+
+Asignación
+nombre[]=new tipo_dato [tamaño];
+*/
+
+int datos[]=new int[10];
+double numeros[]=new double[12];
+char caracteres[]=new char[26];
+						</code>
+					</pre>
+				</section>
+
+         <section>
+          <h3>Arrays: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>fill(array[], data)</td>
+              <td>Asigna el valor <strong>data</strong> a cada una de las posiciones del <strong>array</strong></td>
+            </tr>
+            <tr>
+              <td>sort(array[])</td>
+              <td>Ordena el <strong>array</strong> de forma ascendente.</td>
+            </tr>
+            <tr>
+              <td>binarySearch(array[], key)</td>
+              <td>Busca el valor <strong>key</strong> dentro del <strong>array</strong>. Retorna el indice o el <i>punto de inserción</i> del elemento.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.Arrays;
+
+int datos[]=new int[10];
+
+/*fill*/
+Arrays.fill(datos, 4);
+System.out.println(Arrays.toString(datos));
+
+/*Salida: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4]*/
+
+int j=0;
+for(int i=10; i>0; i--, j++){
+    datos[j]=i;
+}
+
+System.out.println(Arrays.toString(datos));
+
+/*Salida: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]*/
+
+/*sort*/
+Arrays.sort(datos);
+System.out.println(Arrays.toString(datos));
+
+/*Salida: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]*/
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+System.out.println(Arrays.toString(datos));
+
+/*Salida: [7, 2, 16, 11, 5, 15, 9, 4, 23, 10]*/
+
+Arrays.sort(datos);
+System.out.println(Arrays.toString(datos));
+/*Salida: [2, 4, 5, 7, 9, 10, 11, 15, 16, 23]*/
+    
+System.out.println(Arrays.binarySearch(datos, 4));
+/*Salida: 1*/
+
+System.out.println(Arrays.binarySearch(datos, 1));
+/*Salida: -1*/
+
+System.out.println(Arrays.binarySearch(datos, 23));
+/*Salida: 9*/
+
+System.out.println(Arrays.binarySearch(datos, 12));
+/*Salida: -8*/
+
+            </code>
+          </pre>
+        </section>
+
+				<section>
+					<p>También podemos declarar arreglos de varias dimensiones</p>
+          <pre>
+            <code data-trim contenteditable>
+/*
+Declaración de un arreglo multidimensional
+tipo_dato nombre [] [];
+
+Asignación
+nombre[] []=new tipo_dato [tamañoN] [tamañoM];
+*/
+
+int datos[]=new int [5] [3];
+    
+datos[0] [1]=5;
+System.out.println(datos[0] [1]);
+            </code>
+          </pre>
+				</section>
+
+        <section>
+          <h3>ArrayList</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>variable</strong>.
+          </p>
+
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.ArrayList;
+
+/*
+Declaración de un ArrayList
+ArrayList&lt;tipo_dato&gt; nombre=new ArrayList&lt;tipo_dato&gt;();
+*/
+
+ArrayList&lt;Integer&gt; datos=new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Double&gt; numeros=new ArrayList&lt;Double&gt;();
+ArrayList&lt;Character&gt; caracteres=new ArrayList&lt;Character&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>add(data)</td>
+              <td>Añade el valor <strong>data</strong> al final del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>clear()</td>
+              <td>Elimina todos los elementos del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>contains(data)</td>
+              <td>Retorna un <i>boolean</i> que indica si <strong>data</strong> se encuentra en el <strong>ArrayList</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>get(index)</td>
+              <td>Retorna el elemento que se encuentra en la posición <strong>index</strong> del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>indexOf(data)</td>
+              <td>Retorna el indice en el que se encuentra <strong>data</strong> dentro del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>isEmpty()</td>
+              <td>Retorna un <i>boolean</i> que indica si el <strong>ArrayList</strong> tiene elementos o no.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>remove(index)</td>
+              <td>Elimina el elemento que se encuentra en la posición <strong>index</strong> del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>remove(data)</td>
+              <td>Elimina el elemento <strong>data</strong> del <strong>ArrayList</strong>.</td>
+            </tr>
+            <tr>
+              <td>size()</td>
+              <td>Retorna el número de elementos del <strong>ArrayList</strong>.</td>
+            </tr>
+          </table>
+        </section>
+				
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <table>
+            <tr>
+              <th>Método</th>
+              <th>Función</th>
+            </tr>
+            <tr>
+              <td>set(index, data)</td>
+              <td>Remplaza el elemento que se encuentra en la posición <strong>index</strong> del <strong>ArrayList</strong> con <strong>data</strong>.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.ArrayList;
+
+ArrayList&lt;Integer&gt; datos=new ArrayList&lt;Integer&gt;();
+    
+for(int j=10; j>0; j--){
+  datos.add(j);
+}
+    
+datos.set(5, 13);
+    
+for(int j=0; j<10; j++){
+  System.out.print(datos.get(j)+" - ");
+}
+System.out.println();
+
+/*Salida: 10 - 9 - 8 - 7 - 6 - 13 - 4 - 3 - 2 - 1 - */
+    
+System.out.println(datos.indexOf(4));
+/*Salida: 6*/
+
+System.out.println(datos.indexOf(17));
+/*Salida: -1*/
+
+System.out.println(datos.size());
+/*Salida: 10*/
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>¿Fill, Sort, BinarySearch? ¡También es posible!</p>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.Collections;
+
+Collections.sort(datos);
+/*Salida: 1 - 2 - 3 - 4 - 6 - 7 - 8 - 9 - 10 - 13 - */
+
+
+System.out.println(Collections.binarySearch(datos, 0));
+System.out.println(Collections.binarySearch(datos, 3));
+/*Salida: -1
+           2
+*/
+    
+/*
+Fill reemplaza todos los valores del ArrayList con el dato especificado
+*/
+Collections.fill(datos, 6);
+
+            </code>
+          </pre>
+        </section>
+
+
+       	<section>
+					<h3>Optimizando Scanner</h3>
+					<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/NoteBook/java/Bonus:%20Input%20Output/Scanner.java">https://github.com/Meyito/UFPS-ProgramacionCompetitiva</a>
+				</section>
+       
+       
+        <section>
+          <h3>Optimizar Salidas</h3>
+          <pre>
+            <code data-trim contenteditable>
+PrintWriter bw = new PrintWriter(System.out);
+bw.print("Texto");
+bw.println("Texto");
+bw.printf("Texto", parametro);
+
+bw.flush(); 
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>¡Resolvamos un problema!</h3>
+          <p>G - Extreme Sort</p>
+          <a href="http://gcpc.nwerc.eu/problemset_2015.pdf">http://gcpc.nwerc.eu/problemset_2015.pdf</a>
+        </section>
+        <section>
+          <p>John likes sorting algorithms very much. He has studied quicksort, merge sort, radix sort, and
+many more.</p>
+          <p>A long time ago he has written a lock-free parallel string sorting program. It was a combination
+of burstsort and multi-key quicksort. To implement burstsort you need to build a tree of buckets.
+For each input string you walk through the tree and insert part of the string into the right bucket.
+When a bucket fills up, it "bursts" and becomes a new subtree (with new buckets).</p>
+        </section>
+        <section>
+          <img src="img/img3.png" alt="">
+        </section>
+        <section>
+          <p>Well, enough about the past. Today John is playing with sorting algorithms again. This time it’s
+numbers. He has an idea for a new algorithm, “extreme sort”. It’s extremely fast, performance
+levels are OVER NINETHOUSAND. Before he tells anyone any details, he wants to make sure
+that it works correctly.</p>
+          <p>Your task is to help him and verify that the so-called extreme property holds after the first phase
+of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p>
+        </section>
+        <section>
+          <img src="img/img4.png" alt="">
+          <p><strong>Input:</strong> The first line contains a single integer N (1 ≤ N ≤ 1024). The second line contains N integers a1 a2 . . . aN (1 ≤ ai ≤ 1024).</p>
+          <p><strong>Output:</strong>Print one line of output containing “yes” if the extreme property holds for the given input, “no” otherwise</p>
+        </section>
+        <section>
+          <table>
+            <tr>
+              <th>Input</th>
+              <th>Output</th>
+            </tr>
+            <tr>
+              <td>2<br>1 2</td>
+              <td>yes</td>
+            </tr>
+            <tr>
+              <td>4<br>2 1 3 4</td>
+              <td>no</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>Solución</h3>
+          <pre>
+            <code data-trim contenteditable>
+Scanner sc = new Scanner();
+PrintWriter bw = new PrintWriter(System.out);
+    
+int N, anterior, actual;
+boolean flag = true;
+    
+N = Integer.parseInt(sc.next());
+anterior = Integer.parseInt( sc.next() );
+
+for(int i = 1; i &lt;N; i++){
+  actual = Integer.parseInt( sc.next() );
+  if(actual &lt; anterior){
+    flag = false;
+  }
+  anterior = actual;
+}
+if(flag){
+  bw.println("yes");
+}else{
+  bw.println("no");
+}
+bw.flush();
+            </code>
+          </pre>
+        </section>
+        <section>
+        	<h3>Ejercicios propuestos</h3>
+        	<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md">https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md</a>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
