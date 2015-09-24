@@ -14,7 +14,7 @@ Para crear sus propias presentaciones, editar de la siguiente manera el index.ht
 
 * Editar la etiqueta title de la siguiente manera: <title>TITULO DE SU PRESENTACIÓN</title>. Esto no será un título visible en el documento, sino en la barra superior del navegador.
 * Todo el contenido de los slides  <div class="slides"> 
-* Cada slide se enmarca en un <section></section>
+* Cada slide se enmarca en un &lt;section&gt;&lt;/section&gt;
 * Dentro del section se inserta todo el contenido de una diapositiva.
 * Si inserta imágenes, preferiblemente deben estar en la carpeta img. Si bien la libreria redimensiona las imagenes para ajustarla, sea cuidadoso con el tamaño: Podria sobreponerse a los logos institucionales.
 
