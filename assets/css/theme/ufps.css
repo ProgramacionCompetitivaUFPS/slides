@@ -271,3 +271,14 @@ body {
 .reveal section img{
   border: none;
 }
+
+.tableM, .trM, .tdM{
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em !Important;
+  border: 1px solid black !Important; 
+  border-collapse: collapse !Important;
+}
+
+.tdM2{
+  border-bottom: 0px!Important;
+}
