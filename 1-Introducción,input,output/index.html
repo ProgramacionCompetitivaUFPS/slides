@@ -34,10 +34,6 @@
 					<h3>Unidad 1</h3>
                     <p>Entrada y salida estándar, Scanner, Print Writter, ejercicios</p>   
 				</section>
-                <section>
-                	<h3>Gui vs Entrada/Salida Estandar</h3>
-                	<img src="img/img1.png" alt="">
-                </section>
 				<section>
 					<h3>Entrada Estandar</h3>
 					<pre>
@@ -161,12 +157,8 @@ while(sc.hasNext()){
         </section>
 				<section>
 					<h3>Optimizando Scanner</h3>
-					<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/NoteBook/java/Bonus:%20Input%20Output/Scanner.java">https://github.com/Meyito/UFPS-ProgramacionCompetitiva</a>
+					<a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/java/Bonus:%20Input%20Output/Scanner.java">https://github.com/ProgramacionCompetitivaUFPS/notebook</a>
 				</section>
-        <section>
-          <h3>Scanner vs BufferedReader</h3>
-          <img src="img/img2.png" alt="">
-        </section>
 				<section>
 					<h3>¿Como usarlo?</h3>
           <pre>
@@ -224,32 +216,28 @@ bw.flush();
         </section>
         <section>
           <h3>¡Resolvamos un problema!</h3>
-          <p>G - Extreme Sort</p>
-          <a href="http://gcpc.nwerc.eu/problemset_2015.pdf">http://gcpc.nwerc.eu/problemset_2015.pdf</a>
+          <p>A - Cheating Knight</p>
+          <a href="https://acm.javeriana.edu.co/maratones/2016/01/">https://acm.javeriana.edu.co/maratones/2016/01/</a>
         </section>
         <section>
-          <p>John likes sorting algorithms very much. He has studied quicksort, merge sort, radix sort, and
-many more.</p>
-          <p>A long time ago he has written a lock-free parallel string sorting program. It was a combination
-of burstsort and multi-key quicksort. To implement burstsort you need to build a tree of buckets.
-For each input string you walk through the tree and insert part of the string into the right bucket.
-When a bucket fills up, it "bursts" and becomes a new subtree (with new buckets).</p>
+          <p>La tierra del Rey Black es una superficie plana que se extiende infinitamente en cuadrados blancos y negros, muy similar a un tablero de ajedrez infinito. El área de cada cuadrado es exactamente 1m^2. Sir Humpsalot es un caballero que vive en la tierra del Rey Black. Por ley, los caballeros sólo podrán moverse saltando desde el centro de una plaza al centro
+de otro cuadrado, siempre que la distancia entre los centros es exactamente √D metros.</p>
         </section>
         <section>
-          <img src="img/img3.png" alt="">
+          <p>Aunque Sir Humpsalot realiza saltos de √D metros, no se molesta en caer en el centro de una plaza. En otras palabras, a veces cae en una esquina de un cuadrado o incluso en la frontera entre las casillas adyacentes, lo que sea más conveniente. Llegar a su destino suele ser más fácil de esta manera. </p>
         </section>
         <section>
-          <p>Well, enough about the past. Today John is playing with sorting algorithms again. This time it’s
-numbers. He has an idea for a new algorithm, “extreme sort”. It’s extremely fast, performance
-levels are OVER NINETHOUSAND. Before he tells anyone any details, he wants to make sure
-that it works correctly.</p>
-          <p>Your task is to help him and verify that the so-called extreme property holds after the first phase
-of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p>
+        	<img src="img/img1.png" alt="">
         </section>
         <section>
-          <img src="img/img4.png" alt="">
-          <p><strong>Input:</strong> The first line contains a single integer N (1 ≤ N ≤ 1024). The second line contains N integers a1 a2 . . . aN (1 ≤ ai ≤ 1024).</p>
-          <p><strong>Output:</strong>Print one line of output containing “yes” if the extreme property holds for the given input, “no” otherwise</p>
+          <p>Teniendo en cuenta que Sir Humpsalot comienza en el centro de la plaza de coordenadas (0, 0) y tiene que viajar hasta el centro de la plaza de coordenadas (X, Y), su tarea consiste en calcular el número mínimo de saltos que Sir Jumpsalot necesita para llegar a su destino.</p>
+        </section>
+        <section>
+          <p><strong>Input:</strong> La entrada empieza con una linea conteniendo un entero T, el número de casos de prueba. Luego para cada caso se encuentra una linea con 3 enteros X, Y y Z separados por espacios, indicando el cuadrado de la distancia realizada en un salto simple, y las coordenadas del destino final. 1 ≤ D ≤ 108 y −104 ≤ X, Y ≤ 104.</p>
+        </section>
+        <section>
+        	<p><strong>Output:</strong> Para cada caso de prueba, imprime una linea con un simple entero J, el minimo número de saltos necesarios para alcanzar el destino.
+        	</p>
         </section>
         <section>
           <table>
@@ -258,12 +246,17 @@ of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p
               <th>Output</th>
             </tr>
             <tr>
-              <td>2<br>1 2</td>
-              <td>yes</td>
-            </tr>
-            <tr>
-              <td>4<br>2 1 3 4</td>
-              <td>no</td>
+              <td>5<br>
+				5 0 0<br>
+				5 2 3<br>
+				25 -3 -4<br>
+				100 0 -100<br>
+				1 2345 6789<br></td>
+              <td>0<br>
+				2<br>
+				1<br>
+				10<br>
+				7183<br></td>
             </tr>
           </table>
         </section>
@@ -271,34 +264,38 @@ of the algorithm. The extreme property is defined as min (xi,j ) ≥ 0, where</p
           <h3>Solución</h3>
           <pre>
             <code data-trim contenteditable>
-Scanner sc = new Scanner();
-PrintWriter bw = new PrintWriter(System.out);
-    
-int N, anterior, actual;
-boolean flag = true;
-    
-N = Integer.parseInt(sc.next());
-anterior = Integer.parseInt( sc.next() );
 
-for(int i = 1; i &lt;N; i++){
-  actual = Integer.parseInt( sc.next() );
-  if(actual &lt; anterior){
-    flag = false;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class cheating {
+  public static void main (String[] args) throws java.lang.Exception {
+    Scanner sc = new Scanner();
+    int t = Integer.parseInt(sc.next());
+    double d, x, y, dist;
+    while(t > 0){
+      d = Double.parseDouble(sc.next());
+      x = Double.parseDouble(sc.next());
+      y = Double.parseDouble(sc.next());
+      dist = Math.sqrt((x * x + y * y) / d );
+      if(dist > 0 && dist < 1){
+      	dist = 2;
+      }
+      System.out.printf("%.0f\n",Math.ceil(dist));
+      t--;
+    }
   }
-  anterior = actual;
+  static class Scanner{
+    //Insertar la clase incluida en el github.
+  }
 }
-if(flag){
-  bw.println("yes");
-}else{
-  bw.println("no");
-}
-bw.flush();
             </code>
           </pre>
         </section>
         <section>
         	<h3>Ejercicios propuestos</h3>
-        	<a href="https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md">https://github.com/Meyito/UFPS-ProgramacionCompetitiva/blob/master/17-09-15/readme.md</a>
+        	<a href="https://github.com/ProgramacionCompetitivaUFPS/Syllabus/blob/master/Ejercicios%20Propuestos/Entradas%2C%20salidas%20y%20procesamientos%20b%C3%A1sicos.md">Entradas, salidas y procesamientos básicos.md</a>
         </section>
 			</div>
 
