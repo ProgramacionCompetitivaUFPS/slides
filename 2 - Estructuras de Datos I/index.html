@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Estructuras de Datos I</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Estructuras de Datos I</h2>   
+				</section>
+
+        <section>
+          <p><em>Recordando la sesión anterior...</em></p>   
+        </section>
+
+        <section>
+          <h3>Perfect Number</h3>
+          <p>Para cada número se calculan sus divisores y se suman. Para calcular los divisores se evalua hasta <em>sqrt(n)</em>. Para cada <em>i</em> divisor menor a <em>sqrt(n)</em> hay otro divisor igual a <em>n/i</em></p>   
+        </section>
+
+        <section>
+          <h3>Highest and Position</h3>
+          <p>En tiempo de ejecución, por cada lectura se verifica si es mayor al mayor previamente leido. </p>   
+        </section>
+
+        <section>
+          <h3>Salary with Bonus</h3>
+          <p><em>R = Salario + (ventas * 0.15)</em></p>   
+        </section>
+
+        <section>
+          <h3>Theon's Answer</h3>
+          <p>Recorrer todos los valores guardando el indice del mas pequeño. Si hay dos iguales, guardar el que se encontró primero.</p>   
+        </section>
+
+        <section>
+          <h3>Easy Fibonacci</h3>
+          <p>Cada termino de la sucesión de fibonacci se calcula como la suma de sus dos terminos anteriores.</p>   
+        </section>
+
+        <section>
+          <h3>Banknotes and Coins</h3>
+          <p>Para evitar problemas de precisión debe trabajarse con enteros. El número se da con una parte entera, y una parte decimal (siempre dos decimales). Asi que podemos separarlos asi: </p>   
+          <pre>
+            <code data-trim contenteditable>
+N = 476.73
+N1 = (int)N; //476
+N2 = (int)((N - N1) * 100) //73
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>N1 se divide en 100 y esa es la cantidad de billetes de 100 que deben gastarse. El residuo de la división se divide en 50, y asi sucesivamente con los billetes, hasta la moneda de 1. <br><br> Para las monedas de menos de 1, realizamos el mismo proceso pero con n2. Empezamos con la de 50 centavos que será n2/50 y asi sucesivamente.</p>
+        </section>
+
+        <section>
+          <p>Una Estructura de Datos es un medio para <strong>almacenar</strong>
+            y <strong>organizar</strong> datos. Una estructura de datos <strong>NO</strong> resuelve un problema por sí sola,  pero si puede ser la diferencia entre recibir un Accepted o un Time Limit Exceeded :c
+          </p>
+        </section>
+
+        <section>
+          <ul>
+            <li>Arreglos</li>
+            <li>ArrayList</li>
+            <li>Queue</li>
+            <li>Priority Queue</li>
+            <li>Deque</li>
+            <li>Stack</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Arreglos</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>fija</strong>.
+          </p>
+
+        </section>
+
+        <section>
+          <img src="img/arreglo.jpg" alt="">
+        </section>
+
+				<section>
+					<pre>
+						<code data-trim contenteditable>
+/*
+Declaración de un arreglo
+tipo_dato nombre [];
+
+Asignación
+nombre[]=new tipo_dato [tamaño];
+*/
+
+int datos[]=new int[10];
+double numeros[]=new double[12];
+char caracteres[]=new char[26];
+int datos[][]=new int [5] [3];
+
+						</code>
+					</pre>
+				</section>
+
+        <section>
+          <h3>ArrayList</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>variable</strong>.
+          </p>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.ArrayList;
+
+//Declaración de un ArrayList
+
+ArrayList&lt;Integer&gt; datos=new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Double&gt; numeros=new ArrayList&lt;Double&gt;();
+ArrayList&lt;Character&gt; caracteres=new ArrayList&lt;Character&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <ul>
+              <li><strong>add(data): </strong>Añade el valor data al final del ArrayList.</li>
+              <li><strong>clear( ): </strong>Elimina todos los elementos del ArrayList.</li>
+              <li><strong>get(index): </strong>Retorna el elemento que se encuentra en la posición index del ArrayList.</li>
+              <li><strong>indexOf(data): </strong>Retorna el indice en el que se encuentra data dentro del ArrayList.</li>
+              <li><strong>isEmpty( ): </strong>Retorna un <i>boolean</i> que indica si el ArrayList tiene elementos o no.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Queue (Colas)</h3>
+          <p>Son contenedores dinámicos que poseen un comportamiento <strong>FIFO</strong> (First In First Out), y por lo tanto solo se pueden insertar elementos al final y eliminar elementos del principio de la estructura.</p>
+        </section>
+
+        <section>
+          <img src="img/q.gif" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.LinkedList;
+import java.util.Queue;
+
+//Declaración de una Cola
+
+Queue&lt;Integer&gt; cola=new LinkedList&lt;Integer&gt;();
+Queue&lt;String&gt; nombres=new LinkedList&lt;String&gt;();
+Queue&lt;Float&gt; numeros=new LinkedList&lt;Float&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Queue: Métodos</h3>
+          <ul>
+              <li><strong>add(data): </strong>Añade el valor data al final de la Cola.</li>
+              <li><strong>peek( ): </strong>Retorna el elemento del inicio de la Cola.</li>
+              <li><strong>poll( ): </strong>Retorna y elimina el elemento del inicio de la Cola.</li>
+              <li><strong>size( ): </strong>Retorna la cantidad de elementos que se encuentran en la Cola.</li>
+              <li><strong>isEmpty( ): </strong>Retorna un <i>boolean</i> que indica si la Cola se encuentra vacia.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Priority Queue (Cola de Prioridad)</h3>
+          <p>Una cola de prioridad al igual que una cola solo permite acceder al elemento que se encuentra al inicio de la estructura, pero al momento de realizar la inserción la cola toma en cuenta la prioridad asociada al elemento para ordenar todos los datos existentes en la cola. </p>
+        </section>
+
+        <section>
+          <img src="img/pq.gif" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.PriorityQueue;
+
+//Declaración de una Cola
+
+PriorityQueue&lt;Integer&gt; pq=new PriorityQueue&lt;Integer&gt;();
+PriorityQueue&lt;String&gt; nombres=new PriorityQueue&lt;String&gt;();
+PriorityQueue&lt;Float&gt; numeros=new PriorityQueue&lt;Float&gt;();
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Deque (Bicola)</h3>
+          <p>Una Deque o bicola es un contenedor dinámico que permite una inserción y eliminación rápida desde sus dos extremos (inicio - fin)</p>
+        </section>
+
+        <section>
+          <img src="img/deque.gif" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+//Declaración de una Deque
+
+Deque&lt;Integer&gt; deque=new ArrayDeque&lt;Integer&gt;();
+Deque&lt;String&gt; nombres=new ArrayDeque&lt;String&gt;();
+Deque&lt;Float&gt; numeros=new ArrayDeque&lt;Float&gt;();
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Queue: Métodos</h3>
+          <ul>
+              <li><strong>add(data): </strong>Añade el valor data al final de la Deque.</li>
+              <li><strong>addFirst(data): </strong>Añade el valor data al inicio de la Deque.</li>
+              <li><strong>pollFirst( ): </strong>Retorna y elimina el elemento del inicio de la Deque.</li>
+              <li><strong>pollLast( ): </strong>Retorna y elimina el elemento del final de la Deque.</li>
+              <li><strong>peekFirst( ): </strong>Retorna el elemento del inicio de la Deque.</li>
+              <li><strong>peekLast( ): </strong>Retorna el elemento del final de la Deque.</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h3>Pilas (Stack)</h3>
+          <p>Son contenedores dinámicos que poseen un comportamiento <strong>LIFO</strong> (Last In First Out), y por lo tanto solo se pueden insertar y eliminar elementos del final de la estructura.</p>
+        </section>
+
+        <section>
+          <img src="img/pilas.png" alt="">
+          <img src="img/pilas2.png" alt="">
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.Stack;
+
+//Declaración de una Pila
+
+Stack&lt;Integer&gt; pila=new Stack&lt;Integer&gt;();
+Stack&lt;String&gt; nombres=new Stack&lt;String&gt;();
+Stack&lt;Float&gt; numeros=new Stack&lt;Float&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Stack: Métodos</h3>
+          <ul>
+              <li><strong>push(data): </strong>Inserta el valor data en el tope de la Pila.</li>
+              <li><strong>peek( ): </strong>Retorna el elemento del tope de la Pila.</li>
+              <li><strong>pop( ): </strong>Retorna y elimina el elemento del tope de la Pila.</li>
+              <li><strong>empty( ): </strong>Retorna un <i>boolean</i> que indica si la Pila se encuentra vacia.</li>
+          </ul>
+        </section>     
+       
+        <section>
+        	<h3>Ejercicios propuestos</h3>
+        	<a href="https://github.com/ProgramacionCompetitivaUFPS/Syllabus/blob/master/Ejercicios%20Propuestos/Estructuras%20de%20datos.md">https://github.com/ProgramacionCompetitivaUFPS/Syllabus</a>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
