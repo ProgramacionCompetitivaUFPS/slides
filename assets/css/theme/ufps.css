@@ -282,3 +282,81 @@ body {
 .tdM2{
   border-bottom: 0px!Important;
 }
+
+
+
+
+/*********************************************
+ * CODE
+*********************************************/
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
+.hljs {
+  display: block!Important;
+  background: white!Important;
+  padding: 0.5em!Important;
+  color: #333333!Important;
+  overflow-x: auto!Important;
+}
+
+.hljs-comment,
+.hljs-meta {
+  color: #969896!Important;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+  color: #df5000!Important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #a71d5d!Important;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+  color: #0086b3!Important;
+}
+
+.hljs-section,
+.hljs-name {
+  color: #63a35c!Important;
+}
+
+.hljs-tag {
+  color: #333333!Important;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #795da3!Important;
+}
+
+.hljs-addition {
+  color: #55a532!Important;
+  background-color: #eaffea!Important;
+}
+
+.hljs-deletion {
+  color: #bd2c00!Important;
+  background-color: #ffecec!Important;
+}
+
+.hljs-link {
+  text-decoration: underline!Important;
+}
