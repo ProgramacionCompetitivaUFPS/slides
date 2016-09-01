@@ -202,7 +202,7 @@ char grid[tam][tam];
 int X, Y;
 
 int floodfill(int y, int x, char c1, char c2) { 
-    if (y &gt 0 || y &lt= Y || x &gt 0 || x &lt= X) return 0;
+    if (y &lt 0 || y &gt= Y || x &lt 0 || x &gt= X) return 0;
     
     if (grid[y][x] != c1) return 0; // base case
     
