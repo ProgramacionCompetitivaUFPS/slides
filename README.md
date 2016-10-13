@@ -22,3 +22,5 @@ Para crear sus propias presentaciones, editar de la siguiente manera el index.ht
 Si la presentación creada es subida a este repositorio, para evitar duplicaciones de contenido, la presentación debe estar en una carpeta directamente en la rama master, y esta carpeta debe contener solo el index.html y la carpeta img (sin los logos institucionales incluidos en la plantilla). Del mismo modo, debe editar todos los enlaces en el html hacia las carpetas lib, plugin, js y css, anteponiendo ../assets/
 
 Para mayores personalizaciones sobre la plantilla o sobre la libreria, diríjase a la documentación de [reveal.js](https://github.com/hakimel/reveal.js).
+
+[Slides divide y vencerás](https://docs.google.com/presentation/d/1QsYKXjNmEUAlSBWCySRfWPSZJJSnOFuzPiWDum_vrDo/edit?usp=sharing)
