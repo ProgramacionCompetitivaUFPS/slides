@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Segment Tree</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            strong{
+                color: red;
+            }
+            table, tr, td{
+                table-layout: fixed;
+                border: 1px solid #000!important;
+            }
+        </style>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h3>SEGMENT TREE</h3>
+                    <p>RMQ y Lazy Propagation</p>
+                </section>
+
+                <section>
+                    <p><i>En ciencias de la computación, un <b>Segment Tree</b> es una estructura de datos (arbol)
+                    diseñada para almacenar intervalos, o <b>segmentos</b></i>. El mayor beneficio de esta estructura
+                    es que permite solucionar <i>eficientemente</i> preguntas sobre intervalos dinámicos.</p>
+                </section>
+                
+                <section>
+                    <h4>Range Minimum Query (RMQ) Problem</h4>
+                    <p>Encontrar el indice del elemento más pequeño de un array en el rango [i..j]</p>
+                </section>
+
+                <section>
+                    <img src="img/rmq.png">
+                </section>
+
+                <section>
+                    <p>El árbol se construye de manera recursiva :)</p>
+                </section>
+
+                <section>
+                    <img src="img/st1.png">
+                </section>
+
+                <section>
+                    <img src="img/st2.png">
+                </section>
+
+                <section>
+                    <img src="img/st3.png">
+                </section>
+
+                <section>
+                    <img src="img/st4.png">
+                </section>
+                
+                <section>
+                    <p>Solucionando queries... :3</p>
+                </section>
+
+                <section>
+                    <img src="img/st5.png">
+                </section>
+
+                <section>
+                    <img src="img/st6.png">
+                </section>
+
+                <section>
+                    <img src="img/st7.png">
+                </section>
+
+                <section>
+                    <img src="img/st8.png">
+                </section>
+
+                <section>
+                    <p>Pero... no solamente funciona con datos estáticos. Veamos que pasa cuando 
+                    necesitamos actualizar.</p>
+                </section>
+
+                <section>
+                    <img src="img/st9.png">
+                </section>
+                <section>
+                    <img src="img/st10.png">
+                </section>
+                <section>
+                    <img src="img/st11.png">
+                </section>
+                <section>
+                    <img src="img/st12.png">
+                </section>
+                <section>
+                    <img src="img/st13.png">
+                </section>
+
+                <section>
+                    <p>Ahora vamos con el código :D</p>
+                </section>
+
+                <section>
+                    <p>Para construir nuestro Segment Tree de manera correcta debemos tener en cuenta que nos 
+                    interesan las siguientes 3 funciones: </p>
+                    <ul>
+                        <li> Crear el Segment Tree</li>
+                        <li> Realizar consultas(query) sobre el Segment Tree</li>
+                        <li> Actualizar el Segment Tree</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>Estructura de nuestra clase Segment Tree</p>
+                    <pre>
+                        <code>
+class SegmentTree{
+    private int st[], data; // Segment tree y Array de Datos
+    private int n; // Tamaño del array de datos
+
+    public SegmentTree(int [] data){...}
+    private int left(int p){...}
+    private int right(int p){...}
+    private void build(int p, int L, int R){...}
+    private int update(int p, int L, int R, int idx, int new_value){...}
+    private int query(int p, int L, int R, int i, int j){...}
+    public void update(int idx, int new_value){...}
+    public int query(int i, int j){...}
+
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p>Desplazamiento por los nodos del arbol</p>
+                    <pre>
+                        <code>
+private int left(int L){
+    return L << 1;  // * 2
+}
+
+private int right(int R){
+    return R << 1 | 1; // * 2 + 1
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p>Construyendo el Segment Tree</p>
+                    <pre>
+                        <code>
+public SegmentTree(int [] data){
+    data = data;
+    n = data.lenght();
+    st = new int[ 4 * n ];
+    build(1, 0, n - 1); //Nodo, inicio, fin
+}
+
+private void build(int p, int L, int R){ // * DEPENDE DE LO QUE SE NECESITE
+    if( L == R ){
+        st[p] = data[L]; // *
+    }else{
+        int mid = ( L + R ) / 2;
+        build( left(p), L, mid );
+        build( right(p), mid + 1, R);
+
+        int p1, p2;
+        p1 = st[ left(p) ];
+        p2 = st[ right(p) ];
+
+        st[p] = ( data[p1] < data[p2] ) ? p1 : p2; // *
+    }
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p>Realizar consultas(query) sobre el Segment Tree</p>
+                    <pre>
+                        <code>
+public int query(int i, int j){
+    return query(1, 0, n-1, i, j);
+}
+
+private int query(int p, int L, int R, int i, int j){
+    if( i > R || j < L ) return -1; // O un valor que no sea usado
+
+    if( L >= i && R <= j ) return st[p];
+
+    int mid = ( L + R ) / 2;
+    int p1 = query( left(p), L, mid, i, j);
+    int p2 = query( right(p), mid + 1, R, i, j);
+
+    if( p1 == -1 ) return p2;
+    if( p2 == -1 ) return p1;
+
+    return ( data[p1] < data[p2] ) ? p1 : p2;
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p>Actualizar el Segment Tree</p>
+                    <pre>
+                        <code>
+public void update(int idx, int new_value){
+    return update(1, 0, n - 1, idx, new_value);
+}
+
+private int update(int p, int L, int R, int idx, int new_value){
+    if( idx < L || idx > R ) return st[p]; // Fuera de rango
+
+    if( L == R ){
+        data[idx] = new_value;
+        return st[p];
+    }
+
+    int mid = ( L + R ) / 2;
+    int p1 = update( left(p), L, mid, idx, new_value);
+    int p2 = update( right(p), mid + 1, R, idx, new_value);
+
+    st[p] = ( data[p1] < data[p2] ) ? p1 : p2; 
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p> ¿Cómo usarla?</p>
+                    <pre>
+                        <code>
+int[] A = new int[] { 18, 17, 13, 19, 15, 11, 20 };
+SegmentTree st = new SegmentTree(A);
+
+st.rmq(1,3); 
+st.update_point(5,100); 
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <p>IMPORTANTE... Recuerden que podemos adaptar la estructura a lo 
+                    que necesitemos :3</p>
+                </section>
+
+                <section>
+                    <p>¿Dudas?</p>
+                    <img src="img/meme.jpg">
+                </section>
+
+                <section>
+                    <p><a href="https://visualgo.net/segmenttree">Ejemplo Gráfico</a></p>
+                </section>
+
+                <section>
+                    <p><a href="http://ideone.com/jDrFJ0">Ejemplo Código</a></p>
+                </section>
+
+                <section>
+                    <p><a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/java/Data%20Structures/RMQ.java">Código RMQ</a></p>
+                </section>
+
+                <section>
+                    <p>Sugerencia para practicar <a href="https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/practice-problems/algorithm/help-ashu-1/">Help Ashu :3</a></p>
+                </section>
+
+                <section>
+                    <p>Sugerencia 2: Revisar <i>Segment Tree with Lazy Propagation</i></p>
+                </section>
+
+                <section>
+                    <h4>Tutoriales</h4>
+                    <ul>
+                        <li><a href="https://www.hackerearth.com/practice/notes/segment-trees-for-beginners/">Segment Trees for Beginners (Hackerearth)</a></li>
+                        <li><a href="https://www.hackerearth.com/practice/notes/segment-tree-and-lazy-propagation/">Segment Tree and Lazy Propagation (Hackerearth)</a></li>
+                    </ul>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
