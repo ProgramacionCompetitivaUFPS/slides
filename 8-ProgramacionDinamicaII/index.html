@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Programación Dinámica</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            strong{
+                color: red;
+            }
+            table, tr, td{
+                table-layout: fixed;
+                border: 1px solid #000!important;
+            }
+        </style>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Programación Dinámica II</h2>
+        		</section>
+                <section>
+                    <h4>Cambio de moneda: Numero de formas</h4>
+                    <a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=615" target="_blank">Enunciado</a>
+                </section>
+                <section>
+                    <p>Dado un array coinValue con las denominaciones de las monedas, de tamaño N:</p>
+                    <img src="./img/formula-coin.jpg" alt="">
+                </section>
+
+                <section>
+<pre><code>
+private static int N = 5;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[6][7500]; //Inicializar a -1
+
+private static int ways(int type, int value) {
+  
+}                        
+</code></pre>
+                </section>
+                <section>
+<pre><code>
+private static int N = 5;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[6][7500]; //Inicializar a -1
+
+private static int ways(int type, int value) {
+  if (value == 0)              return 1;
+  if (value < 0 || type == N)  return 0;
+}                        
+</code></pre>
+                </section>
+                <section>
+<pre><code>
+private static int N = 5;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[6][7500]; //Inicializar a -1
+
+private static int ways(int type, int value) {
+  if (value == 0)              return 1;
+  if (value < 0 || type == N)  return 0;
+  return ways(type + 1, value) + ways(type, value - coinValue[type]);
+}                        
+</code></pre>
+                </section>
+                <section>
+<pre><code>
+private static int N = 5;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[6][7500]; //Inicializar a -1
+
+private static int ways(int type, int value) {
+  if (value == 0)              return 1;
+  if (value < 0 || type == N)  return 0;
+  if (memo[type][value] != -1) return memo[type][value];
+  memo[type][value] = ways(type + 1, value) + ways(type, value - coinValue[type]);
+  return memo[type][value];
+}                        
+</code></pre>
+                </section>
+                <section>
+                    <h4>Tabla</h4>
+                    <img src="./img/tabla.jpg" alt="">
+                </section>
+                <section>
+                    <h4>Version bottom - up</h4>
+
+<pre><code>
+private static int N = 5, M = 12;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[N][M];
+	
+public static void ways() {
+  for(int i = N - 1; i >= 0; i--) { // i = tipo actual
+    for(int j = 0; j < M; j++) { // j = valor actual
+    }
+  }
+}    
+</code></pre>
+                </section>
+                <section>
+                    <h4>Version bottom - up</h4>
+
+<pre><code>
+private static int N = 5, M = 12;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[N][M];
+	
+public static void ways() {
+  for(int i = N - 1; i >= 0; i--) { // i = tipo actual
+    for(int j = 0; j < M; j++) { // j = valor actual
+      if (j == 0) {
+        memo[i][j] = 1;
+      } 
+    }
+  }
+}    
+</code></pre>
+                </section>
+                <section>
+                    <h4>Version bottom - up</h4>
+
+<pre><code>
+private static int N = 5, M = 12;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[N][M];
+	
+public static void ways() {
+  for(int i = N - 1; i >= 0; i--) { // i = tipo actual
+    for(int j = 0; j < M; j++) { // j = valor actual
+      if (j == 0) {
+        memo[i][j] = 1;
+      } else {
+        int valor1 = 0, valor2 = 0, _i, _j;
+        // Calculamo valor1, es decir, posibilidad de no incluir la moneda
+        _i = i + 1;
+        _j = j;
+        if(_i < N) valor1 = memo[_i][_j];
+        
+      }
+    }
+  }
+}    
+</code></pre>
+                </section>
+                <section>
+                    <h4>Version bottom - up</h4>
+
+<pre><code>
+private static int N = 5, M = 12;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[N][M];
+	
+public static void ways() {
+  for(int i = N - 1; i >= 0; i--) { // i = tipo actual
+    for(int j = 0; j < M; j++) { // j = valor actual
+      if (j == 0) {
+        memo[i][j] = 1;
+      } else {
+        int valor1 = 0, valor2 = 0, _i, _j;
+        // Calculamo valor1, es decir, posibilidad de no incluir la moneda
+        _i = i + 1;
+        _j = j;
+        if(_i < N) valor1 = memo[_i][_j];
+				
+        // Calculamos valor2, es decir, posibilidad de incluir la moneda
+        _i = i;
+        _j = j - coinValue[_i];
+        if(_j >= 0) valor2 = memo[_i][_j];			
+        
+      }
+    }
+  }
+}    
+</code></pre>
+                </section>
+                <section>
+                    <h4>Version bottom - up</h4>
+
+<pre><code>
+private static int N = 5, M = 12;
+private static int[] coinValue = new int[] {1, 5, 10, 25, 50};
+private static int[][] memo = new int[N][M];
+	
+public static void ways() {
+  for(int i = N - 1; i >= 0; i--) { // i = tipo actual
+    for(int j = 0; j < M; j++) { // j = valor actual
+      if (j == 0) {
+        memo[i][j] = 1;
+      } else {
+        int valor1 = 0, valor2 = 0, _i, _j;
+        // Calculamo valor1, es decir, posibilidad de no incluir la moneda
+        _i = i + 1;
+        _j = j;
+        if(_i < N) valor1 = memo[_i][_j];
+				
+        // Calculamos valor2, es decir, posibilidad de incluir la moneda
+        _i = i;
+        _j = j - coinValue[_i];
+        if(_j >= 0) valor2 = memo[_i][_j];			
+        memo[i][j] = valor1 + valor2;
+      }
+    }
+  }
+  // No retorno
+}    
+</code></pre>
+                </section>
+                
+           
+                <section>
+                    <h4>Cambio de moneda</h4>
+                    <p>Dada una cantidad V de centavos, y una lista de n monedas existentes, determinar cual es la mínima cantidad de monedas que debe usarse para completar V.</p>
+
+                </section>
+                <section>
+                    <ol>
+                        <li>Sub-estructura óptima.</li>
+                        <li>Superposición de Problemas.</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Planteamiento</h3>
+                    <img src="img/4.gif" alt="">
+                </section>
+                <section>
+                    <h3>Solución Recursiva</h3>
+<pre><code>
+INTEGER monedas[]
+
+INTEGER change(INTEGER k) {
+    IF (k == 0) 
+        RETURN 0
+    IF (k < 0)
+        RETURN INF
+    INTEGER rta = INF
+    FOR i IN RANGE[0, n - 1]
+        rta = MIN(rta, change(k - monedas[i]))
+    RETURN rta + 1
+}
+</code></pre>
+                </section>
+                    <section>
+                        <h3>Añadiendo tabla DP</h3>
+<pre><code>
+INTEGER monedas[n]
+INTEGER memo[n] //Se inicializa en -1 o NULL
+
+INTEGER change(INTEGER k) {
+    IF (k == 0) 
+        RETURN 0
+    IF (k < 0)
+        RETURN INF
+    INTEGER rta = INF
+    FOR i IN RANGE[0, n - 1]
+        rta = MIN(rta, change(k - monedas[i]))
+    RETURN rta + 1
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Verificando si ya ha sido calculado</h3>
+<pre><code>
+INTEGER monedas[n]
+INTEGER memo[MAX] 
+
+INTEGER change(INTEGER k) {
+    IF (k == 0) 
+        RETURN 0
+    IF (k < 0)
+        RETURN INF
+    IF (memo[k] != -1)
+        RETURN memo[k]
+    INTEGER rta = INF
+    FOR i IN RANGE[0, n - 1]
+        rta = MIN(rta, change(k - monedas[i]))
+    RETURN rta + 1
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Calculando y guardando</h3>
+<pre><code>
+INTEGER monedas[n]
+INTEGER memo[MAX] 
+
+INTEGER change(INTEGER k) {
+    IF (k == 0) 
+        RETURN 0
+    IF (k < 0)
+        RETURN INF
+    IF (memo[k] != -1)
+        RETURN memo[k]
+    INTEGER rta = INF
+    FOR i IN RANGE[0, n - 1]
+        rta = MIN(rta, change(k - monedas[i]))
+    memo[k] = rta + 1
+    RETURN rta + 1
+}
+</code></pre>
+                    </section>
+                    <section>
+                    <h4>Problema de la Mochila</h4>
+                    <p>Dada una mochila con una capacidad W, y n productos, donde cada producto tiene un peso wi y un valor vi, calcular el mayor valor que puede introducirse en la mochila, sin exceder su capacidad.</p>
+                </section>
+                <section>
+                    <ol>
+                        <li>Sub-estructura óptima.</li>
+                        <li>Superposición de Problemas.</li>
+                    </ol>
+                </section>
+                <section>
+                    <h4>Planteamiento</h4>
+                    <p>Dados:</p>
+                    <ul>
+                        <li>W[n] => Pesos de los n productos</li>
+                        <li>P[n] => Valor de los n productos</li>
+                        <img src="img/3.gif" alt="">
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solución Recursiva sin memorización</h3>
+<pre><code>
+INTEGER N //Numero de objetos 
+INTEGER prices[] //precios de cada producto
+INTEGER weights[] //pesos de cada producto
+
+INTEGER knapsack(INTEGER id, INTEGER w) {
+    IF (id == N || w == 0) 
+        RETURN 0
+    IF (weights[id] > w)
+        RETURN knapsack(id + 1, w)
+    ELSE
+        RETURN MAX(knapsack(id + 1, w), prices[id] + knapsack(id + 1, w - weights[id]))
+}
+</code></pre>
+                </section>
+                               <section>
+                        <p>Añadimos tabla DP</p>
+<pre><code>
+INTEGER N //Numero de objetos 
+INTEGER prices[] //precios de cada producto
+INTEGER weights[] //pesos de cada producto
+INTEGER memo[][] //DEBE INICIALIZARSE EN -1 y/o null
+
+INTEGER knapsack(INTEGER id, INTEGER w) {
+    IF (id == N || w == 0) 
+        RETURN 0
+    IF (weights[id] > w)
+        RETURN knapsack(id + 1, w)
+    ELSE
+        RETURN MAX(knapsack(id + 1, w), prices[id] + knapsack(id + 1, w - weights[id]))
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <p>Verificamos si el problema ya se precalculó</p>
+<pre><code>
+INTEGER N //Numero de objetos 
+INTEGER prices[] //precios de cada producto
+INTEGER weights[] //pesos de cada producto
+INTEGER memo[][] 
+
+INTEGER knapsack(INTEGER id, INTEGER w) {
+    IF (id == N || w == 0) 
+        RETURN 0
+    IF (memo[id][w] != -1) 
+        RETURN memo[id][w]
+    IF (weights[id] > w)
+        RETURN knapsack(id + 1, w)
+    ELSE
+        RETURN MAX(knapsack(id + 1, w), prices[id] + knapsack(id + 1, w - weights[id]))
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <p>Precalculamos y guardamos</p>
+<pre><code>
+INTEGER N //Numero de objetos 
+INTEGER prices[] //precios de cada producto
+INTEGER weights[] //pesos de cada producto
+INTEGER memo[][] 
+
+INTEGER knapsack(INTEGER id, INTEGER w) {
+    IF (id == N || w == 0) 
+        RETURN 0
+    IF (memo[id][w] != -1) 
+        RETURN memo[id][w]
+    IF (weights[id] > w)
+        memo[id][w] = knapsack(id + 1, w)
+    ELSE
+        memo[id][w] =  MAX(knapsack(id + 1, w), prices[id] + knapsack(id + 1, w - weights[id]))
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <p>Precalculamos y guardamos</p>
+<pre><code>
+INTEGER N //Numero de objetos 
+INTEGER prices[] //precios de cada producto
+INTEGER weights[] //pesos de cada producto
+INTEGER memo[][] 
+
+INTEGER knapsack(INTEGER id, INTEGER w) {
+    IF (id == N || w == 0) 
+        RETURN 0
+    IF (memo[id][w] != -1) 
+        RETURN memo[id][w]
+    IF (weights[id] > w)
+        memo[id][w] = knapsack(id + 1, w)
+    ELSE
+        memo[id][w] =  MAX(knapsack(id + 1, w), prices[id] + knapsack(id + 1, w - weights[id]))
+    RETURN memo[id][w]
+}
+</code></pre>
+                    </section>
+                <section>
+                    <h3>Ejercicios propuestos</h3>
+                    <a href="https://a2oj.com/register?ID=31068">UFPS - Week 3</a>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
