@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Grafos</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Grafos I</h2>
+                    <h3>Floyd Warshall, Puntos de Articulación y Puentes</h3>
+        		</section>
+                <section>
+                    <h3>Floyd Warshall</h3>
+                    <h4>Ruta más corta + DP </h4>
+                </section>
+                <section>
+                    <p>¿Qué debemos hacer cuando necesitamos conocer la información de la ruta más corta desde <i>todos los vertices (V) del grafo</i>?</p>
+                </section>
+                <section>
+                    <h4>Solución 1: Dijkstra</h4>
+                    <p>Ejecutar V llamados del algoritmo de Dijkstra</p>
+                    <p>Costo: <i>O( v^3 log V )</i></p>
+                </section>
+                <section>
+                    <h4>Solución 2: Bellman Ford</h4>
+                    <p>Ejecutar V llamados del algoritmo de Bellman Ford</p>
+                    <p>Costo: <i>O( v^4 )</i></p>
+                </section>
+                <section>
+                    <h4>Solución 3: Floyd Warshall ;)</h4>
+                    <p>Ejecutar <strong>1</strong> llamado al Algoritmo de Floyd Warshall</p>
+                    <p>Costo: <i>O( v^3 )</i></p>
+                </section>
+                <section>
+                    <h5>Condiciones</h5>
+                    <ul>
+                        <li>El grafo debe estar almacenado en una matriz de adyacencia.</li>
+                        <li>Usarse en grafos cuya cantidad de vertices V <= 400</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="img/fw.png" alt="">
+                </section>
+                <section>
+                    <h3>Floyd Warshall</h3>
+                    <pre>
+                        <code>                      
+static void FloydWarshall(){
+    int i, j, k;
+
+    for( k = 0; k < V; k++ ){
+        for( i = 0; i < V; i++ ){
+            for( j = 0; j < V; j++ ){
+                adj[i][j] = Math.min( adj[i][j], adj[i][k] + adj[k][j] );
+            }
+        }
+    }
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Limpiar la Matriz de Adyacencia</h3>
+                    <pre>
+                        <code>                      
+static void init(){
+    int i, j;
+
+    for( i = 0; i < V; i++ ){
+        adj[i] = new int[V];
+        for( j = 0; j < V; j++ ){
+            adj[i][j] = 1000000000;
+        }
+        adj[i][i] = 0;
+    }
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Puntos de Articulación y Puentes</h3>
+                    <h4>DFS :3</h4>
+                </section>
+                <section>
+                    <p>Un <strong>Punto de Articulación</strong> en un grafo, es un vertice tal que al eliminarlo, produce un incremento en el número de componentes conexas.</p>
+                </section>
+                <section>
+                    <img src="img/puntoarticulacion.jpg" alt="">
+                </section>
+                <section>
+                    <p>Un <strong>Puente</strong> en un grafo, es una arista tal que al eliminarla, produce un incremento en el número de componentes conexas. </p>
+                </section>
+                <section> 
+                    <img src="img/puentes.png" alt="">
+                </section>
+                <section>
+                    <p>Vamos a introducir dos nuevos atributos al algoritmo DFS</p>
+                    <ul>
+                        <li><strong>dfs_num</strong>: Almacena un contador cuando el vertice <i>u</i> es visitado por primera vez.</li>
+                        <li><strong>dfs_low</strong>: Almacena el <i>dfs_num</i> más pequeño que es alcanzable desde la expansión del vertice <i>u</i>.</li>
+                    </ul>
+                </section>
+                <section> 
+                    <img src="img/meme.jpg" alt="">
+                </section>
+                <section>
+                    <p>Puntos a tener en cuenta: </p>
+                    <ul>
+                        <li>Para grafos NO dirigidos</li>
+                        <li>Al comenzar el dfs_low(v) = dfs_num(v) </li>
+                        <li>No se actualizara el <i>dfs_low(u)</i> con un arco de "regreso" (u, v) si <i>v</i> es el padre de <i>u</i></li>
+                        <li><strong>Caso especial:</strong> La raiz del DFS es un punto de articulación si y solo si tiene más de un hijo.</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="img/apb.png" alt="">
+                </section>
+                <section>
+                    <a href="http://ideone.com/Z6Z6CI">Ejemplo Código</a>
+                </section>
+                <section>
+                    <img src="img/apb2.png" alt="">
+                </section>
+        		<section>
+                    <h3>Ejercicios propuestos</h3>
+                    <a href="https://a2oj.com/contest?ID=31315">UFPS - Week 4</a>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
