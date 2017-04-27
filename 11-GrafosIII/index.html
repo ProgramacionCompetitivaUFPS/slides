@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Grafos</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Grafos III</h2>
+                    <h3>Componentes fuertemente conexas (SCC)</h3>
+        		</section>
+                <section>
+                    <h3>Componentes fuertemente conexas</h3>
+                    <h4>Grafos DIRIGIDOS</h4>
+                </section>
+                <section>
+                    <p>Una <strong>SCC</strong> puede ser definida de la siguiente manera: "Si tomamos cualquier par de vertices <i>u</i> y <i>v</i> en la SCC, podemos encontrar una ruta de <i>u</i> a <i>v</i> y vice versa.</p>
+                </section>
+                <section>
+                    <img src="img/Scc.png" alt="">
+                </section>
+                <section>
+                    <h4>Solución 1: Algoritmo de Tarjan</h4>
+                    <h4>Modificación de DFS</h4>
+                </section>
+                <section>
+                    <p>¿Recuerdan el <i>dfs_low</i> y el <i>dfs_num</i>?</p>
+                </section>
+                <section>
+                    <img src="img/meme.jpg" alt="">
+                </section>
+                <section>
+                    <img src="img/g.png">
+                </section>
+                <section>
+                    <pre>
+                        <code>                      
+public static void tarjanSCC( int u ){
+    dfs_low[u] = dfs_num[u] = dfsCont;
+    dfsCont++;
+    s.push(u);
+    visited[u] = true;
+        
+    int j, v;
+        
+    for( j = 0; j < ady[u].size(); j++ ){
+        v = ady[u].get( j );
+            
+        if( dfs_num[v] == -1 ){
+            tarjanSCC( v );
+        }
+            
+        if( visited[v] ){
+            dfs_low[u] = Math.min( dfs_low[u], dfs_low[v] );
+        }
+    }
+        
+    if( dfs_low[u] == dfs_num[u] ){
+        cantSCC++;
+        System.out.println("COMPONENTE CONEXA #" + cantSCC );
+        while( !s.empty() ){
+            v = s.peek();
+            s.pop();
+            visited[v] = false;
+            System.out.println(v);
+            if( u == v ) break;
+        }
+    }
+        
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <a href="http://ideone.com/0OdhTe">Ejemplo</a>
+                </section>
+                <section>
+                    <img src="img/meme2.jpg">
+                </section>
+                <section>
+                    <h3>Ejercicios propuestos</h3>
+                    <a href="https://a2oj.com/contest?ID=31425">UFPS - Week 5</a>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
