@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Matemáticas</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Matemáticas II</h2>   
+				</section>
+                <section>
+                    <h3>Fibonacci</h3>
+                    <p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34...</p>
+                    <p>fibo(0) = 0</p>
+                    <p>fibo(1) = 1</p>
+                    <p>fibo(n) = fibo(n - 1) + fibo(n - 2)</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+long fibo[] = new long[50];
+
+fibo[0] = 0;
+fibo[1] = 1;
+for(int i = 2; i < 50; i++) {
+    fibo[i] = fibo[i - 1] + fibo[i - 2];
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Números de catalan</h3>
+                    <p>Secuencia de números naturales que aparece en diferentes problemas de conteo.</p>
+                    <p>1, 1, 2, 5, 14, 42, 132, 429, 1430...</p>
+
+                </section>
+                <section>
+                    <p>De cuantas formas se pueden balancear n parentesis?.</p>
+                    <table>
+                        <tr>
+                            <td>Número de parentesis</td>
+                            <td>Formas de balancear</td>
+                            <td>Número de formas</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td></td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>()</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>()(), (())</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>((())), ()()(), (())(), ()(()), (()())</td>
+                            <td>5</td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <h3>Cálculo de un número de Catalán</h3>
+                    <img src="img/catalan.jpg" alt="">
+                </section>
+                <section>
+                    <h3>Cálculo de los números de Catalán</h3>
+                    <pre>
+                        <code>
+static int MAX = 30;
+static long catalanNumbers[] = new long[MAX+1];
+
+static void catalan(){
+  catalanNumbers[0] = 1;
+  for(int i = 1; i <= MAX; i++){
+    catalanNumbers[i] = (long)(catalanNumbers[i-1]*((double)(2*((2 * i)- 1))/(i + 1)));
+  }
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Coeficientes binomiales</h3>
+                    <p>Número de formas en que se puede extraer subconjuntos a partir de un conjunto dado.</p>
+                    <p>En una clase de 35 alumnos se quiere elegir un comité formado por tres alumnos. ¿Cuántos comités diferentes se pueden formar?</p>
+                </section>
+                <section>
+                    <img src="img/cb.jpg" alt="">
+                </section>
+                <section>
+                    <pre>
+                        <code>
+static long binomialCoefficient(long n, long r) {
+  if (r < 0 || n < r) { 
+  	return 0; 
+  }
+  r = Math.min(r, n - r);
+  long ans = 1;
+  for (int i = 1; i <= r; i++) {
+    ans = ans * (n - i + 1) / i;
+  }
+  return ans;
+}
+                        </code>
+                    </pre>
+
+                </section>
+                <section>
+                    <h3>Euler Totient</h3>
+                    <p>totient(n) es la cantidad de números menores o iguales a n que son coprimos con n.</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+static void totient(int n, int resultados[]){
+  boolean aux[]=new boolean[n];
+  for(int i = 0; i < n; i++) {
+	resultados[i]=i;
+  }
+  for(int i = 2; i < n; i++){
+    if(!aux[i]) {
+	  for(int j = i; j < n ; j+=i){
+	    aux[j]=true;
+	    resultados[j]= resultados[j]-(resultados[j]/i) ;
+      }
+      aux[i] = false;
+    }
+  }
+}
+                        </code>
+                    </pre>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
