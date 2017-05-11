@@ -54,6 +54,18 @@
                 <section>
                     <pre>
                         <code>
+double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
+
+// Retorna true si el punto r está a la izquierda de pq
+boolean ccw(point p, point q, point r) {
+  return cross(toVec(p, q), toVec(p, r)) > 0; 
+}
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <pre>
+                        <code>
 boolean isConvex(ArrayList<point> P) {
   int sz = (int)P.size();
   if (sz <= 3) return false; // un punto/sz=2 o una linea/sz=3 no son convexos
