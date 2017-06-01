@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Grafos</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Grafos IV</h2>
+                    <h3>Arboles de Expansión Mínima</h3>
+        		</section>
+                <section>
+                    <p>Dado un grafo <strong>conexo</strong>, <strong>no dirigido</strong> y 
+                    <strong>con pesos</strong> se debe seleccionar un subconjunto de arcos, 
+                    de tal manera que el grafo continue siendo conexo y que el peso total de 
+                    todos los arcos seleccionados sea mínimo.</p>
+                    <p>Para poder cumplir con este criterio de conectividad, se deben elegir los
+                         <strong><i>V - 1</i></strong> arcos que formen el arbol que cubra(conecte) todos
+                         los nodos <strong>V</strong> del grafo.
+                    </p>
+                </section>
+                <section>
+                    <p>Un grafo puede tener más de un Arbol de Expansión Mínima con el <strong>mismo costo</strong>.</p>
+                </section>
+                <section>
+                    <h3>Algoritmos</h3>
+                    <ul>
+                        <li>Algoritmo de Kruskal</li>
+                        <li>Algoritmo de Prim</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Algoritmo de Kruskal</h3>
+                </section>
+                <section>
+                    <img src="img/kruskal.gif" alt="">
+                </section>
+                <section>
+                    <ol>
+                        <li>Ordenar todos los arcos de menor a mayor peso.</li>
+                        <li>Tomar cada uno de los arcos ordenados y <strong>si no forma ciclo</strong> 
+                        añadirlo. (La detección de ciclos puede ser facilmente implementada a traves de Disjoint Sets )</li>
+                    </ol>
+                </section>
+                <section>
+                    <a href="http://ideone.com/PmXwTp">Ejemplo</a>
+                </section>
+                <section>
+                    <h3>Algoritmo de Prim</h3>
+                </section>
+                <section>
+                    <img src="img/prim.gif" alt="">
+                </section>
+                <section>
+                    <ol>
+                        <li>Procesar: Tomar un nodo inicial, marcarlo como visitado.</li>
+                        <li>Procesar: Añadir a la cola de prioridad todos sus arcos (omitiendo aquellos arcos cuyo 
+                            nodo destino ya haya sido visitado)</li>
+                        <li>Prim: Mientras que la cola de prioridad no se encuentre vacia, se evalua cada uno de 
+                            los arcos que se encuentran en ella.
+                        </li>
+                        <li>Prim: Si el nodo del arco que se esta evaluando no ha sido visitado aún, se elige este arco
+                            y se procesa este nodo.
+                        </li>
+                    </ol>
+                </section>
+                <section>
+                    <a href="http://ideone.com/i6vSSF">Ejemplo</a>
+                </section>
+                <section>
+                    <p>¿Cuándo usar Kruskal y cuándo Prim?</p>
+                    <p>Hablemos de grafos densos y dispersos...</p>
+                </section>
+                <section>
+                    <h3>Grafos Densos</h3>
+                    <img src="img/denso.png">
+                    <p>Les faltan muy pocas aristas de todas las posibles.</p>
+                </section>
+                <section>
+                    <h3>Grafos Dispersos</h3>
+                    <img src="img/disperso.png">
+                    <p>Tienen relativamente pocas aristas.</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>En grafos <strong>dispersos</strong> es conveniente usar el algoritmo de 
+                        <strong>Kruskal</strong></li>
+                        <li>En grafos <strong>densos</strong> es conveniente usar el algoritmo de 
+                        <strong>Prim</strong></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Otras aplicaciones</h3>
+                </section>
+                <section>
+                    <ul>
+                        <li>Maximum Spanning Tree</li>
+                        <li>Minimum Spanning Subgraph</li>
+                        <li>Minimum Spanning Forest</li>
+                        <li>Second Best Spanning Tree</li>
+                    </ul>
+                </section>        
+                <section>
+                    <h3>Ejercicios propuestos</h3>
+                    <a href="https://a2oj.com/contest?ID=31888">UFPS - Week 8</a>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
