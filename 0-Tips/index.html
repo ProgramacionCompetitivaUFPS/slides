@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Tips</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+        <section>
+          <h2>Tips para ser competitivo</h2>
+        </section>
+				<section>
+					<h3>Programación Competitiva</h3>
+            <p>Dados problemas bien conocidos de las Ciencias de la Computación, resolverlos tan rápido como sea posible.</p>   
+				</section>
+				<section>
+					<h4>Tip 1: Codea rápido</h4>
+          <img src="img/codea.gif" alt="" style="width: 300px; height: 300px;">
+				</section>
+        <section>
+          <h4>Tip 2: Indentifica rápidamente los problemas</h4>
+          <p>Los equipos reciben un conjunto de problemas (entre 7 y 12) de diferentes tipos. Es importante 
+            lograr categorizar estos problemas. Algunas de las temáticas más comunes son las siguientes:
+          </p>
+        </section>
+        <section>
+          <ul>
+            <li>Ad Hoc</li>
+            <li>Búsqueda completa</li>
+            <li>Divide y vencerás</li>
+            <li>Algoritmos Greedy</li>
+            <li>Progamación dinámica</li>
+            <li>Grafos</li>
+            <li>Matemáticas</li>
+            <li>Procesamiento de cadenas</li>
+            <li>Geometria Computacional</li>
+            <li>Problemas raros/dificiles</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Tip 3: Hacer análisis de algoritmos</h4>
+          <p>Dado el límite de las entradas... ¿Puede nuestra solución, dada su complejidad pasar el limite de
+            tiempo dado para el problema?
+          </p>
+        </section>
+        <section>
+          Muchas veces, existe más de una manera de solucionar un problema. Nuestra tarea es elegir <strong>
+            la solución más simple que funcione
+          </strong> (que su ejecución no supere el tiempo limite y aún así produzca una respuesta correcta).
+        </section>
+        <section>
+          <img src="img/complejidades.png" alt="">
+          <p style="font-size: 25px; margin-top: 0px;">Mayor número de datos <i>n</i> que puede procesarse dada la complejidad del algoritmo.</p>
+        </section>
+        <section>
+          <h4>Tip 4: Probar el código (Debuggear)</h4>
+          <img src="img/bug.gif" alt="">
+        </section>
+        <section>
+          <ul>
+            <li>Verifica que tus salidas sean exactamente iguales a las salidas dadas en los casos de prueba del problema.</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Para ejercicios con múltiples casos de prueba, podrías incluir en tus pruebas un mismo caso varias veces. 
+              Esto ayuda a determinar si olvidaste inicializar alguna variable al finalizar la ejecución de un caso de prueba.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Tus casos de prueba deben incluir casos <i>tricky</i>. Intenta probar con el peor caso posible que se te ocurra.</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Tus casos de prueba deben incluir <strong>casos grandes</strong>. Ve incrementando el tamaño de la entrada 
+            hasta alcanzar los limites propuestos por el problema.</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Tip 5: Trabajo en equipo</h4>
+          <img src="img/teamwork.gif" alt="">
+        </section>
+        <section>
+          <p><strong>Ser cuidadosos al copiar el código del notebook o los apuntes</strong></p>
+          <p> No se quieren tener errores o penalizaciones por copiar mal un algoritmo.</p>
+        </section>
+        <section>
+          <p><strong>Hacer siempre el siguiente problema más facil aún no resuelto</strong></p>
+          <p>Una de las preocupaciones del equipo durante la competencia debe ser: <i>¿Cuál es el siguiente 
+            problema más fácil?</i></p>
+        </section>
+        <section>
+          <p><strong>Comenzar leyendo todo</strong></p>
+          <p>Cuando aparece un problema fácil, se avisa y alguien debe programarlo. Si aparece otro aún más
+            fácil lo pueden priorizar. Al cabo de cierto tiempo todos los problemas ya deberian estar leidos, 
+            no es necesario que todos los miembros del equipo hayan leido todos los problemas, sino que cada
+            problema al menos un integrante del equipo lo debería haber leído.
+          </p>
+        </section>
+        <section>
+          <p><strong>Usar el Scoreboard</strong></p>
+          <p>Es una herramienta valiosa para detectar los problemas fáciles y también los difíciles/tramposos.
+            Un problema que a los 4 minutos ya tiene un Aceptado, seguramente será un problema sencillo de programar.
+            De la misma manera un problema que han enviado muchos equipos y ninguno a acertado es problablemente difícil
+            o muy tramposo. <strong>NO</strong> se debe perder tiempo mirando el scoreboard en cada actualización.
+          </p>
+        </section>
+        <section>
+          <p><strong>Al principio de la competencia no debería trabajar más de un participante en el mismo problema.</strong></p>
+          <p>Los participantes se pueden pasar problemas entre ellos pero la idea no es paralelizar la solución de un mismo 
+            problema al inicio de la competencia.
+          </p>
+        </section>
+        <section>
+          <p><strong>Releer el enunciado completo</strong></p>
+          <p>Si hay dudas, el ejercicio parece raro y más aún si hubo un <strong>Wrong Answer</strong> se debe releer el 
+          enunciado. Es necesario prestar mucha atención a los límites ya que estos pueden cambiar totalmente el problema.</p>
+        </section>
+        <section>
+          <p><strong>Aprovechar el computador</strong></p>
+          <p>Si creen que el que esta en el computador se esta tardando demasiado y tienen otro ejercicio que pueden terminar
+            mucho más rápido... hagan un cambio: Programen a papel el ejercicio en el que estan tardando mucho y mientras
+            aprovechen el computador para hacer el otro.
+          </p>
+        </section>
+        <section>
+          <p><strong>Probar muy bien el problema antes de enviarlo al juez</strong></p>
+          <p>Antes de realizar el envio, tomense un tiempo para probar el código y ejecuten algunos casos de prueba interesantes.</p>
+        </section>
+        <section>
+          <p><strong>Al final de la competencia trabajar en 1 o 2 problemas como máximo</strong></p>
+          <p>Cerca del final (faltando 1 hora más o menos) deben tratar de abordar 1 o 2 problemas como mucho. Deben 
+            descartar aquellos problemas que consideren que no van a salir en el tiempo y a diferencia del inicio de la competencia
+            deben tratar de trabajar juntos en la solución de un mismo problema, ya sea aportando sugerencias, detectando errores y demás
+            ya que conviene asegurar al menos 1 problema más.
+          </p>
+        </section>
+        <section>
+          <h4>Tip 6: Práctica y más práctica</h4>
+          <p>Existe una gran cantidad de plataformas que les permitirán mejorar sus habilidades de solución de problemas.</p>
+        </section>
+        <section>
+          <img src="img/judges.png" alt="">
+        </section>
+        <section>
+          <img src="img/official.png" alt="">
+        </section>
+        <section>
+          <p>Pero lo más importante de todo es... ¡Disfruten la competencia! :)</p>
+          <img src="img/enjoy2.gif" alt="">
+        </section>
+        <section>
+          <h4>Fuentes</h4>
+          <ul>
+            <li><a href="https://campcarib.wordpress.com/2016/04/15/consejos-para-competir-en-el-acm-icpc-teamwork-durante-la-competencia/">
+            Consejos para competir en el ACM-ICPC. Teamwork durante la competencia.</a></li>
+            <li>Competitive Programming 3</li>
+          </ul>
+        </section>
+				
+			</div>
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
