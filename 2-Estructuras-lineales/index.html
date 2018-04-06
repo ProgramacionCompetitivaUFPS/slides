@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Estructuras de Datos I</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h2>Estructuras de Datos I</h2>  
+          <h4>Estructuras lineales</h4> 
+				</section>
+
+        <section>
+          <p>Una Estructura de Datos es un medio para <strong>almacenar</strong>
+            y <strong>organizar</strong> datos. Una estructura de datos <strong>NO</strong> resuelve un problema por sí sola,  pero si puede ser la diferencia entre recibir un Accepted o un Time Limit Exceeded :c
+          </p>
+        </section>
+
+        <section>
+          <ul>
+            <li>Arreglos</li>
+            <li>Arreglos multidimensionales</li>
+            <li>ArrayList</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Arreglos</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>fija</strong>.
+          </p>
+        </section>
+
+        <section>
+          <img src="img/arreglo.jpg" alt="">
+        </section>
+
+				<section>
+					<pre>
+						<code data-trim contenteditable>
+/*
+Declaración de un arreglo
+tipo_dato nombre [];
+
+Asignación
+nombre[] = new tipo_dato [tamaño];
+*/
+
+int datos[] = new int[10];
+double numeros[] = new double[12];
+char caracteres[] = new char[26];
+						</code>
+					</pre>
+				</section>
+
+        <section>
+					<pre>
+						<code data-trim contenteditable>
+/* Asignar información */
+datos[0] = 1;
+datos[1] = 2;
+
+/* Obtener infomación */
+System.out.println(  datos[0] );
+int x = datos[0] + datos[1];
+						</code>
+					</pre>
+        </section>
+
+        <section>
+					<pre>
+						<code data-trim contenteditable>
+/* Procesamiento de un array */
+int datos[] = new int[10];
+
+for( int i = 0; i < datos.length; i++ ){
+  datos[i] = i * 2;
+  System.out.println( datos[i] );
+}
+						</code>
+					</pre>
+        </section>
+        
+        <section>
+          <h3>Arreglos multidimensionales</h3>
+          <p>Un arreglo multidimensional es un <i>arreglo de arreglos</i>. Los arreglos
+          de dos dimensiones (mejor conocidos como matrices) son los más comunes.</p>
+        </section>
+        
+        <section>
+          <p>Un arreglo de 2 dimensiones <strong>N * M</strong> cuenta con <strong><i>N filas</i></strong>
+          y <strong><i>M columnas</i></strong> que pueden ser accedidas a traves de sus indices.</p>
+        </section>
+
+        <section>
+          <img src="img/matrix.png" alt="">
+        </section>
+
+        <section>
+					<pre>
+						<code data-trim contenteditable>
+/*
+Declaración de un arreglo multidimensional
+tipo_dato nombre [][];
+
+Asignación
+nombre[] = new tipo_dato [tamaño][tamaño];
+*/
+
+int datos[][] = new int[3][4];
+double numeros[][] = new double[12][4];
+char caracteres[][] = new char[25][2];
+						</code>
+					</pre>
+        </section>
+        
+        <section>
+					<pre>
+						<code data-trim contenteditable>
+/* Asignar información */
+datos[0][0] = 1;
+datos[0][1] = 2;
+
+/* Obtener infomación */
+System.out.println(  datos[0][0] );
+int x = datos[0][0] + datos[0][1];
+						</code>
+					</pre>
+        </section>
+
+        <section>
+					<pre>
+						<code data-trim contenteditable>
+/* filas */
+int n = 3;
+/* columnas */
+int m = 4;
+/* Matriz */
+int datos[] = new int[n][m];
+
+for( int i = 0; i &lt; datos.length; i++ ){
+  for( int j = 0; j &lt; datos[0].length; j++ ){
+    datos[i][j] = i + j;
+    System.out.println( datos[i][j] );
+  }
+}
+						</code>
+					</pre>
+        </section>
+
+        <section>
+          <h3>ArrayList</h3>
+          <p>Colecciones de datos secuenciales para ser almacenadas y accedidas luego
+            a traves de sus indices.</p>
+          <p>
+            La cantidad de elementos a almacenar es <strong>variable</strong>.
+          </p>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.ArrayList;
+
+//Declaración de un ArrayList
+
+ArrayList&lt;Integer&gt; datos = new ArrayList&lt;Integer&gt;();
+ArrayList&lt;Double&gt; numeros = new ArrayList&lt;Double&gt;();
+ArrayList&lt;Character&gt; caracteres = new ArrayList&lt;Character&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>ArrayList: Métodos</h3>
+          <ul>
+              <li><strong>add(data): </strong>Añade el valor data al final del ArrayList.</li>
+              <li><strong>clear( ): </strong>Elimina todos los elementos del ArrayList.</li>
+              <li><strong>get(index): </strong>Retorna el elemento que se encuentra en la posición index del ArrayList.</li>
+              <li><strong>indexOf(data): </strong>Retorna el indice en el que se encuentra data dentro del ArrayList.</li>
+              <li><strong>isEmpty( ): </strong>Retorna un <i>boolean</i> que indica si el ArrayList tiene elementos o no.</li>
+          </ul>
+        </section>
+
+        <section>
+            <pre>
+              <code data-trim contenteditable>
+ArrayList&lt;Integer&gt; datos = new ArrayList&lt;Integer&gt;();
+int t = 10;
+for( int i = 0; i &lt; t; i++ ){
+	datos.add(i);
+}
+ 
+for( int i = 0; i &lt; datos.size(); i++ ){
+	System.out.println( datos.get(i) );
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+              <h3>¿Preguntas?</h3>
+              <img src="img/homer.gif" alt="">
+          </section>
+
+          <section>
+              <h3>Let's code :3</h3>
+              <img src="img/code.gif" alt="">
+          </section>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
