@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Estructuras de Datos II</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+        	<h2>Estructuras de Datos II</h2>  
+        	<h4>Estructuras no lineales</h4> 
+		</section>
+
+        <section>
+          <ul>
+            <li>TreeSet</li>
+            <li>TreeMap</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>TreeSet</h3>
+          <p>
+          	TreeSet es una estructura de datos que nos permite almacenar y <strong>organizar</strong> datos.
+          </p>
+          <p>
+            Internamente es un <strong>Arbol Binario de Busqueda Balanceado</strong>, por lo que permite realizar operaciones de inserción, búsqueda y borrados de manera eficiente.
+          </p>
+        </section>
+
+		<section>
+          <h3>TreeSet</h3>
+          <img src="img/bst.png" alt="">
+        </section>
+
+		<section>
+          <h3>TreeSet</h3>
+          <p>
+          	TreeSet almacena datos ordenados automaticamente al momento de insertarlos. Pero no guarda el orden de inserción.
+          </p>
+          <p>
+            <strong>NO</strong> almacena valores repetidos.
+          </p>
+        </section>
+
+		<section>
+			<h3>Declarar e inicializar un TreeSet</h3>
+			<pre>
+				<code data-trim contenteditable>
+import java.util.TreeSet;
+
+//Declaración de un TreeSet
+
+TreeSet&lt;Integer&gt; tree = new TreeSet&lt;&gt;();
+TreeSet&lt;String&gt; nombres = new TreeSet&lt;&gt;();
+				</code>
+			</pre>
+		</section>
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <ul>
+              <li><strong>add(data): </strong>Inserta el valor data en el TreeSet.</li>
+              <li><strong>remove(data): </strong>Elimina el elemento data del TreeSet.</li>
+              <li><strong>clear(): </strong>Elimina todos los elementos del TreeSet.</li>
+              <li><strong>contains(data): </strong>Retorna  un <i>boolean</i> que indica si el elemento data se encuentra en el TreeSet.</li>
+              <li><strong>isEmpty(): </strong>Retorna un <i>boolean</i> que indica si el TreeSet tiene elementos o no.</li>
+              <li><strong>size(): </strong>Retorna el número de elementos que se encuentran en el TreeSet.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>TreeSet: Métodos</h3>
+          <ul>
+              <li><strong>first(): </strong>Retorna el elemento más pequeño que se encuentra en el TreeSet.</li>
+              <li><strong>last(): </strong>Retorna el elemento más grande que se encuentra en el TreeSet.</li>
+              <li><strong>pollFirst(): </strong>Retorna y elimina el elemento más pequeño del TreeSet.</li>
+              <li><strong>pollLast(): </strong>Retorna y elimina el elemento más grande del TreeSet.</li>      
+          </ul>
+        </section>
+
+        <section>
+			<h3>Recorrer un TreeSet</h3>
+			<p>Una forma facil de recorrer una estructura de datos no lineal es usanso <strong>for each</strong>:</p>
+			<p>for (TipoDato nombreVar : nomTreeSet) { ... }</p>
+			<pre>
+				<code data-trim contenteditable>
+import java.util.TreeSet;
+
+TreeSet&lt;String&gt; nombres = new TreeSet&lt;&gt;();
+
+for (String nom : nombres) {
+	System.out.println(nom);
+}
+				</code>
+			</pre>
+		</section>
+
+		<section>
+          <h3>TreeMap</h3>
+          <p>
+          	TreeMap es una estructura de datos que nos permite almacenar y <strong>organizar</strong> datos.A diferencia del <i>TreeSet</i>, el <i>TreeMap</i> nos permite almacenar pares de <strong>Clave-Valor</strong>.</p>
+          <p>
+            Internamente es un <strong>Arbol Binario de Busqueda Balanceado</strong>, por lo que permite realizar operaciones de inserción, búsqueda y borrados de manera eficiente.
+          </p>
+        </section>
+
+        <section>
+          <h3>TreeMap</h3>
+          <img src="img/map.png" alt="">
+        </section>
+
+		<section>
+          <h3>TreeMap</h3>
+          <p>
+          	TreeMap almacena pares de datos ordenados por su <strong>Clave</strong> automaticamente al momento de insertarlos. Pero no guarda el orden de inserción.
+          </p>
+          <p>
+            <strong>NO</strong> almacena <strong>Claves</strong> repetidas.
+          </p>
+        </section>
+
+        <section>
+			<h3>Declarar e inicializar un TreeMap</h3>
+          <pre>
+            <code data-trim contenteditable>
+import java.util.TreeMap;
+
+//Declaración de un TreeMap
+
+TreeMap&lt;Integer, String&gt; estudiantes = new TreeMap&lt;&gt;();
+TreeMap&lt;String, Double&gt; notas = new TreeMap&lt;&gt;();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>TreeMap: Métodos</h3>
+          <ul>
+              <li><strong>put(key, value): </strong>Asocia value con la Clave key dentro del mapa.</li>
+              <li><strong>get(key): </strong>Retorna el valor asociado a key dentro del TreeMap.</li>
+              <li><strong>remove(key): </strong>Elimina el par Clave/Valor asociado a key del TreeMap</li>
+              <li><strong>clear(): </strong>Elimina todos los pares del TreeMap.</li>
+              <li><strong>containsKey(data): </strong>Retorna un <i>boolean</i> que indica si el elemento data se encuentra almacenado como una Clave en el TreeMap.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>TreeMap: Métodos</h3>
+          <ul>
+              <li><strong>isEmpty(): </strong>Retorna un <i>boolean</i> que indica si el TreeMap tiene pares Clave/Valor o no.</li>
+              <li><strong>size(): </strong>Retorna el número de pares Clave/Valor que se encuentran en el TreeMap.</li>
+              <li><strong>firstKey(): </strong>Retorna la clave más pequeña que se encuentra almacenada en el TreeMap.</li>
+              <li><strong>lastKey(): </strong>Retorna la clave más grande que se encuentra almacenada en el TreeMap.</li>
+              <li><strong>keySet(): </strong>Retorna un Set con todas las Claves contenidas en el TreeMap.</li>
+          </ul>
+        </section>
+
+        <section>
+			<h3>Recorrer un TreeMap</h3>
+			<p>De nuevo usamos el <strong>for each</strong>, pero en este caso para recorrer el listado de Claves:</p>
+			<p>for (TipoDatoClave nombreVar : nomTreeMap.keySet()) { ... }</p>
+			<pre>
+				<code data-trim contenteditable>
+import java.util.TreeMap;
+
+TreeMap&lt;Integer, String&gt; estudiantes = new TreeMap&lt;&gt;();
+
+for (Integer cod : estudiantes.keySet()) {
+	System.out.println(estudiantes.get(cod));
+}
+				</code>
+			</pre>
+		</section>
+
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
