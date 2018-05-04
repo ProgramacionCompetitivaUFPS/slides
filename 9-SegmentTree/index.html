@@ -210,7 +210,7 @@ public int query(int i, int j){
 
 private int query(int p, int L, int R, int i, int j){
     if( i > R || j < L ) return -1; // O un valor que no sea usado
-
+				    // Se sale completamente del rango buscado
     if( L >= i && R <= j ) return st[p];
 
     int mid = ( L + R ) / 2;
@@ -276,7 +276,7 @@ st.update_point(5,100);
                 </section>
 
                 <section>
-                    <p><a href="https://visualgo.net/segmenttree">Ejemplo Gráfico</a></p>
+                    <p><a href="https://visualgo.net/es/segmenttree">Ejemplo Gráfico</a></p>
                 </section>
 
                 <section>
@@ -286,15 +286,6 @@ st.update_point(5,100);
                 <section>
                     <p><a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/java/Data%20Structures/RMQ.java">Código RMQ</a></p>
                 </section>
-
-                <section>
-                    <p>Sugerencia para practicar <a href="https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/practice-problems/algorithm/help-ashu-1/">Help Ashu :3</a></p>
-                </section>
-
-                <section>
-                    <p>Sugerencia 2: Revisar <i>Segment Tree with Lazy Propagation</i></p>
-                </section>
-
                 <section>
                     <h4>Tutoriales</h4>
                     <ul>
