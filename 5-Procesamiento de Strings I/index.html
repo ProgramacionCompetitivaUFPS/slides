@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Procesamiento de String I</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+        	<h2>Procesamiento de String I</h2>
+		</section>
+
+    <section>
+      <ul>
+      	<li>String vs. StringBuilder</li>
+        <li>Manipulación de String</li>
+        <li>Z-Function</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Motivación</h3>
+      <p>
+        Los problemas de String no son tan comunes como los grafos o la programación dinamica, pero es indispensable manejar los <strong>algoritmos y estructuras de datos</strong> para el procesamiento de String, ya que puede ser la herramienta para resolver un problema que otros equipos no logran resolver.
+      </p>
+    </section>
+
+    <section>
+      <h3>String vs. StringBuilder</h3>
+    </section>
+
+    <section>
+      <h3>String vs. StringBuilder</h3>
+      <p>Java provee dos maneras de manejar cadenas de texto: String y StringBuilder (o StringBuffer).</p>
+    </section>
+
+    <section>
+        <h3>String</h3>
+        <ul>
+            <li>Manejo como tipo de dato primitivo.</li>
+            <li>Permite inicializar con: String s = "Hola";</li>
+            <li>Permite concatenaciones con el signo "+"</li>
+            <li>Internamente, cada concatenación crea un nuevo objeto.</li>
+        </ul>
+    </section>
+    <section>
+        <h3>StringBuilder</h3>
+        <ul>
+            <li>Manejo como tipo objeto.</li>
+            <li>Para inicializar: StringBuilder s = new StringBuilder();</li>
+            <li>Las concatenaciones se realizan con el método append();</li>
+            <li>Internamente aumenta el tamaño dinamicamente sin crear nuevos objetos.</li>
+        </ul>
+    </section>
+    <section>
+        <h3>String vs. StringBuilder</h3>
+        <p>Comparativa entre String y StringBuilder en ejecución:</p>
+        <a href="http://ideone.com/Z2dLE1">Test</a>
+    </section>
+
+    <section>
+          <h3>Manipulación de String</h3>
+          <h4>String Ad-Hoc</h4> 
+    </section>
+
+		<section>
+          <h3>Manipulación de String</h3>
+          <p>
+          	Hay ciertos problemas de String que no requieren el uso de algoritmos o estructuras de datos complejas para el manejo de String, tan solo hay que idear una manera correcta y eficiente de hacer lo que pide el problema.
+          </p>
+    </section>
+
+    <section>
+          <h3>Manipulación de String</h3>
+          <p>
+            Para este tipo de problemas es muy importante tener un buen manejo del lenguaje de programación y conocer metodos que faciliten la codificación.
+          </p>
+    </section>
+
+    <section>
+          <h3>Manipulación de String</h3>
+          <p>
+            Algunos tipos de problemas de manipulación de String clasicos son:
+          </p>
+          <ul>
+            <li>Codificar/Decodificar un mensaje.</li>
+            <li>Frecuencia de una letra o una palabra.</li>
+            <li>Modificar los datos de entrada.</li>
+            <li>Formatear los datos de salida (leer <a href="https://dzone.com/articles/java-string-format-examples">Format</a>).</li>
+            <li>Comparar String.</li>
+            <li>Otros...</li>
+        </ul>
+    </section>
+
+    <section>
+          <h3>Manipulación de String</h3>
+          <p>
+            Algunos ejemplos de métodos utiles de StringBuilder son:
+          </p>
+          <ul>
+              <li><strong>append(...): </strong>Permite concatenar datos de cualquier tipo primitivo (o incluso un char[]) al final del String.</li>
+              <li><strong>charAt(i): </strong>Retorna el caracter de la posición i.</li>
+              <li><strong>getChars(i, j, arr, k): </strong>Guarda en el char[] arr a partir de la posición k, los caracteres de la posición i hasta la j-1.</li>
+              <li><strong>reverse(): </strong>Invierte el contenido del StringBuilder.</li>
+              <li><strong>substring(i, j): </strong>Retorna un String que contiene el substring de la posición i hasta la j-1.</li>
+          </ul>
+    </section>
+
+		<section>
+			<h3>Z-Function</h3>
+		</section>
+
+        <section>
+          <h3>Z-Function</h3>
+          <p>Definición: "El Arreglo-Z de un String s de largo n contiene para cada i = 0, 1, ..., n-1 el largo de el substring más largo de s que inicia en la posición i y es un prefijo de s." (Laaksonen, A. Competitive Programmer’s Handbook).</p>
+        </section>
+
+        <section>
+          <h3>Z-Function</h3>
+          <p>Dado un String s retorna un arreglo z donde z[i] es igual al mayor numero de caracteres desde s[i] que coinciden con los caracteres desde s[0].</p>
+        </section>
+
+        <section>
+          <h3>Z-Function</h3>
+          <p>Por ejemplo, el Arreglo-Z de ACBACDACBACBACDA es:</p>
+          <img src="img/z_ejemplo.png" alt="">
+        </section>
+
+        <section>
+          <h3>Z-Function</h3>
+          <p>La Función-Z construye eficientemente el Arreglo-Z en O(n). El algoritmo calcula los valores de izquierda a derecha usando información antes guardada en el Arreglo-Z y comparando substring caracter por caracter.</p>
+        </section>
+
+		<section>
+          <h3>Z-Function</h3>
+          <h4>String Searching / String Matching</h4>
+          <p>
+          	Es el problema fundamental en el procesamiento de String:</p>
+          <p>
+            Dado un Texto t y un Patrón p, el problema es:
+          Buscar todas las ocurrencias del patrón p en el texto t.</p>
+    </section>
+
+    <section>
+          <h3>Z-Function</h3>
+          <h4>String Searching / String Matching</h4>
+          <p>
+            Podemos resolver este problema eficientemente usando la Función-Z creando un nuevo String s = p + '#' + t, donde '#' puede ser cualquier caracter que no aparezca en t ni en p.
+          </p>
+    </section>
+
+    <section>
+          <h3>Z-Function</h3>
+          <h4>String Searching / String Matching</h4>
+          <p>
+            Computamos la Función-Z para s. Hacemos n = t.length( ) y m = p.length( ).</p>
+          <p>
+            Para todo i en el rango [m+1, m+1+n) donde z[i] sea igual a m sabemos que hay una ocurrencia de p en t, en la posición i-m-1.
+          </p>
+    </section>
+
+		<section>
+          <h3>Z-Function</h3>
+          <p>Por ejemplo, si t = HATTIVATTI y p = ATT, el Arreglo-Z de s = p + '#' + t es:</p>
+          <img src="img/z_ejemplo2.png" alt="">
+    </section>
+
+        <section>
+          <h3>Código de Z-Function</h3>
+          <p>El código de Z-Function se encuentra disponible en el repositorio en Github:</p>
+          <ul>
+            <li><a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/java/String/Z-Function.java">Java</a></li>
+            <li><a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/c%2B%2B/String/Z-Function.cpp">C++</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Gracias</h3>
+    </section>
+
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
