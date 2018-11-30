@@ -32,20 +32,23 @@
 			<div class="slides">
 				<section>
 					<h2>Grafos I</h2>
-                    <h3>Introducción, representación, DFS, BFS</h3>
+                    <h3>Terminología, Representación, Recorridos y Algunas Aplicaciones</h3>
         		</section>
                 <section>
-                    <i>Everyone is on average approximately only six steps away from any other person on Earth. <br> <strong>Stanley Milgram, The Six Degrees of Separation experiment</strong> </i>
+                 <h3>Motivación</h3>  
+			<p>Muchos problemas que se presenten en la vida real se pueden representar como algún problema de grafos, y se pueden resolver usando el algoritmo apropiado.</p>
                 </section>
+		<section>
+                 <h3>Terminología</h3>  
+	        </section>
                 <section>
         			<p>Un grafo es un conjunto de objetos llamados <i>vértices</i> o <i>nodos</i> unidos por enlaces llamados <i>aristas</i> o <i>arcos</i>, que permiten representar relaciones entre elementos de un conjunto.<br> <br>Típicamente, un grafo se representa gráficamente como un conjunto de puntos (vértices) unidos por líneas (aristas). </p>
         		</section>
         		<section>
                     <img src="img/Graph.jpg" alt="">
+		    <img src="img/nodo-arista.png" alt="">	
                 </section>
-                <section>
-                    <h3>Terminologia</h3>
-                </section>
+               
                 <section>
                     <h3>Grafos Dirigidos y No Dirigidos</h3>
                     <img src="img/grafoDyND.png">
@@ -66,12 +69,16 @@
                     <h3>Self Loop</h3>
                     <img src="img/sl.png" alt="">
                 </section>
+		<section>
+                    <h3>Camino en un Grafo</h3>
+                    <img src="img/caminos.png" alt="">
+                </section>
                 <section>
                     <h3>Ciclos</h3>
                     <img src="img/loop.png" alt="">
                 </section>
                 <section>
-                    <h3>¿Cómo representarlos?</h3>
+                    <h3>Repersentación</h3>
                 </section>
                 <section>
                     <h3>Matriz de Adyacencia</h3>
@@ -101,7 +108,8 @@
                 </section>
                 <section>
                     <h3>Lista de Arcos</h3>
-                    <p>En la listas de arcos, se almacena la información de una grafo visto desde el punto de vista de sus arcos únicamente. En grafos ponderados un arco esta compuesto por el vertice origen, el vertice destino y el peso del arco. En grafos no ponderados un arco esta compuesto por el vertice origen y el vertice destino.</p>
+                    <p>Se almacena la información de una grafo visto desde el punto de vista de sus arcos únicamente. Es conveniente usarlo cuando no es necesario encontrar todos los arcos que comiencen en un nodo determinado.</p>
+		    <p>En grafos ponderados un arco esta compuesto por el vertice origen, el vertice destino y el peso del arco (arco(int, int, int)). En grafos no ponderados un arco esta compuesto por el vertice origen y el vertice destino (arco(int, int)).</p>
                 </section>
                 <section>
                     <p>Arco = (origen, destino, peso)</p>
@@ -109,14 +117,15 @@
                 </section>
                 <section>
                     <h3>Grafos Implícitos</h3>
-                    <p>Algunos grafos no tienen que ser almacenados en una estructura de datos de grafos para poder operar con ellos. Los grafos implicitos pueden encontrarse de dos maneras...</p>
+                    <p>Algunos grafos no tienen que ser almacenados en una estructura de datos de grafos para poder operar con ellos.</p>
+		    <p>Los grafos implicitos pueden encontrarse de dos maneras:</p>
                 </section>
                 <section>
-                    <h3>... Cuando los arcos pueden ser determinados facilmente</h3>
+                    <h3>1. Cuando los arcos pueden ser determinados facilmente</h3>
                     <img src="img/ig1.png">
                 </section>
                 <section>
-                    <h3>... Cuando los arcos pueden ser determinados con algunas reglas</h3>
+                    <h3>2. Cuando los arcos pueden ser determinados con algunas reglas</h3>
                     <img src="img/ig2.png">
                 </section>
 
@@ -172,6 +181,9 @@ metodo BFS(grafo, nodo_origen):
                     <img src="img/dfs.gif" alt="">
                     <img src="img/bfs.gif" alt="">
                 </section>
+		<section>
+			<h3>Aplicaciones</h3>
+                </section>
                 <section>
                     <h3>ENCONTRAR COMPENENTES CONEXOS(Grafos no Dirigidos)</h3>
                     <pre>
@@ -186,6 +198,21 @@ metodo BFS(grafo, nodo_origen):
                         </code>
                     </pre>
                 </section>
+		<section>
+                    <h3>DETECCION DE CICLOS (para el grafo conectado)</h3>
+                    <pre>
+                        <code>
+ metodo DFS(nodo_origen):
+  marcamos origen como visitado
+  para cada vertice v adyacente a origen en el grafo:
+    si v no ha sido visitado:
+      marcamos como visitado v
+      llamamos recursivamente DFS(v)
+                        </code>
+                    </pre>
+			<p>Si el v ha sido visitado anteriormente, se considera que existe ciclo</p>
+                </section>
+                <section>
                 <section>
                     <h3>FLOOD FILL: Marcar/Colorear Componentes Conexos</h3>
                     <p>Los algoritmos de DFS y BFS pueden ser usados para más propositos que simplemente encontrar la cantidad de componentes conexos en un grafo. Flood fill es un algoritmo comunmente usado en grafos implicitos y permite "colorear" y contar el tamaño de cada componente conexo.</p>
