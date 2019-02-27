@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Análisis de algoritmos</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>ANÁLISIS DE ALGORITMOS</h2>
+        		</section>
+                <section>
+                   <h3>MOTIVACIÓN</h3>
+                    <p>La eficiencia en algoritmos es Importante en Programación Competitiva. Es relativamente fácil diseñar un algoritmo que resuelva el problema lentamente, el verdadero problema es diseñar un algoritmo de resolución rápida.</p>
+                </section>
+                <section>
+                    <h3><i>Time Complexity</i></h3>
+                    <p>es la Complejidad Computacional que describe la cantidad de tiempo en que se ejecuta un Algoritmo.</p>
+                </section>
+                <section>
+                   <p><i>Notación Big O: <strong>O(...)</strong></i></p>
+                   <p>(Donde <strong>(...)</strong> representa alguna función)</p>
+                   <p>Representará el Time Complexity para el peor de los casos</p>
+                </section>
+                <section>
+                    <p>Definimos una variable <strong>"n"</strong> como el tamaño de una entrada</p>
+                    <p></p>
+                </section>
+                <section>
+                    <h3>LOOPS</h3>
+                    <p><i>Time Complexity: O(n^k)</i></p>
+                    <p>Donde <strong>k</strong> representa el número de ciclos anidados.</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    for(int i = 0; i < n; i++) {
+                       ...
+                       }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n)</i></p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+                       ...
+                       }
+                    }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n^2)</i></p>
+                </section>
+                <section>
+                    <p>El Time Complexity representa el <i><strong>Orden de Magnitud</strong></i> de un Algoritmo:</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    for(int i = 0; i < n; i+=2) {
+                       ...
+                       }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n)</i></p>
+                </section>
+                <section>
+                    <h3>Fases</h3>
+                    <p>Si el algoritmo consiste en fases consecutivas, su Time Complexity será la mayor complejidad en alguna de sus fases.</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+        for(int i = 0; i < n; i++) {
+                           ...
+                           }
+
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                           ...
+                           }
+                        }
+
+        for(int i = 0; i < n; i++) {
+                           ...
+                           }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n^2)</i></p>
+                </section>
+                <section>
+                    <h3>Varias Variables</h3>
+                    <p>Aveces el Time Complexity depende de varios factores, por lo tanto su orden de complejidad contiene varias variables.</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+                       ...
+                       }
+                    }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n*m)</i></p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    for(int i = 0; i < n; i++) {
+                       ...
+                    }
+                    
+    for(int i = 0; i < m; i++) {
+                       ...
+                       }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n+m)</i></p>
+                </section>
+                <section>
+                    <h3>Recursiones</h3>
+                    <p>El time Complexity de una función recursiva depende del número de veces que la función se llama y la complejidad en tiempo de una sola llamada.</p>
+                    <p>Su complejidad total será el producto de esos valores.</p>
+                </section>
+                <section>
+                    <pre>
+                        <code>
+    void function f(int n){
+        
+        if(n==1) return;
+        
+        f(i-1);
+    }
+                        </code>
+                    </pre>
+                    <p><i>Time Complexity: O(n)</i></p>
+                </section>
+                <section>
+                    <p><i>Analicemos el siguiente algoritmo:</i></p>
+                     <pre>
+                        <code>
+    void function g(int n){
+        
+        if(n==1) return;
+        
+        g(i-1);
+        g(i-1);
+    }
+                        </code>
+                    </pre>
+                </section>        
+                <section>
+                    <table>
+                        <tr>
+                            <th>Función (llamadas)</th>
+                            <th>N° de llamadas</th>
+                        </tr>
+                        <tr>
+                            <td>g(n)</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>g(n-1)</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>g(n-2)</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>g(n-3)</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>g(1)</td>
+                            <td>2^(n-1)</td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <p>En conclusión:</p>
+                    <p><i>1 + 2 + 4 + 8 + ... + 2^(n-1) = 2^n</i></p>
+                    <p><i>Time Complexity: O(2^n)</i></p>
+                </section>
+                <section>
+                    <h3>Clases de Complejidad</h3>
+                </section>
+                <section>
+                    <ul>
+                        <li> <strong><i>O(1):</i> Complejidad Constante.</strong> Producido por una fórmula directa que calcula la respuesta.</li> <br>
+                        <li><strong><i>O(log n):</i> Complejidad Logarítmica.</strong> Donde <i><strong>log2 n</strong></i> representa el # de veces que n debe dividirse por 2 para obtener 1.</li><br>
+                        <li><strong><i>O(sqrt(n)):</i></strong> Más lento que <i>O(log n)</i> pero más rápido que <i>O(n)</i>. Requiere <i>n^(1/2)</i> operaciones.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li> <strong><i>O(n):</i> Complejidad lineal.</strong> Accede a cada elemento al menos 1 vez antes de dar con la respuesta.</li> <br>
+                        <li><strong><i>O(n*log n):</i></strong> Preprocesamiento de la entrada en  <i>O(log n)</i> antes de procesar cada dato. Tambien producido por el uso de alguna estructura de datos que maneje operaciones en <i>O(log n)</i>.</li><br>
+                        <li><strong><i>O(n^2):</i> Complejidad Cuadrática.</strong> Frecuentemente asociado a 2 ciclos anidados.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                       <li><strong><i>O(n^3):</i> Complejidad Cúbica.</strong> Frecuentemente asociado a 3 ciclos anidados.</li> <br>
+                        <li> <strong><i>O(2^n):</i></strong> Se itera sobre todos los <strong>subconjuntos</strong> de la entrada.</li> <br>
+                        <li><strong><i>O(n!):</i></strong> Se itera sobre todas las <strong>permutaciones</strong> de la entrada.</li>
+                    </ul>
+                </section>
+                <section>
+                <p><strong><i>Algoritmo Polinomial</i></strong></p>
+                <p>Todas las complejidades vistas (excepto <i>O(2^n)</i> y <i>O(n!)</i>) hacen parte de <i>Algoritmos Polinomiales</i>.</p>
+                </section>
+                <section>
+                    <h3>Estimando la Eficiencia</h3>
+                    <img src="img/time_complexities.png" width="500px">
+                </section>
+                <section>
+                    <p><i>Para los curiosos:</i> Problemas <a href="https://www.quora.com/What-does-NP-hard-mean">NP - Hard</a>.</p>
+                </section>
+                <section>
+                    <p><a href="http://bigocheatsheet.com">Know Thy Complexities!</a></p>
+                </section>
+                <section>
+                    <img src="img/vamo.jpg" width="400px">
+                </section>
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
