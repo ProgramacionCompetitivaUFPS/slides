@@ -166,12 +166,11 @@
                     <p><i>Analicemos el siguiente algoritmo:</i></p>
                      <pre>
                         <code>
-    void function g(int n){
+    int function fibo(int n){
         
-        if(n==1) return;
+        if(n<2) return n;
         
-        g(i-1);
-        g(i-1);
+        else return fibo(n-1) + fibo(n-2);
     }
                         </code>
                     </pre>
