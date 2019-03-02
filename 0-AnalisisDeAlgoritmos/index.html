@@ -156,7 +156,7 @@
         
         if(n==1) return;
         
-        f(i-1);
+        f(n-1);
     }
                         </code>
                     </pre>
@@ -203,13 +203,13 @@
                         </tr>
                         <tr>
                             <td>g(1)</td>
-                            <td>2^(n-1)</td>
+                            <td>(2^n)-1</td>
                         </tr>
                     </table>
                 </section>
                 <section>
                     <p>En conclusión:</p>
-                    <p><i>1 + 2 + 4 + 8 + ... + 2^(n-1) = 2^n</i></p>
+                    <p><i>1 + 2 + 4 + 8 + ... + (2^n)-1 = 2^n</i></p>
                     <p><i>Time Complexity: O(2^n)</i></p>
                 </section>
                 <section>
