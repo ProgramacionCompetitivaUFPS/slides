@@ -31,18 +31,28 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Grafos IV</h2>
-                    <h3>Arboles de Expansión Mínima</h3>
-        		</section>
+          <h2>Grafos: Arboles de Expansión Mínima (MST)</h2>
+        </section>
+				<section>
+					<h3>Un poco en Contexto:</h3>
+          	<p>En grafos, un <strong><i>Árbol de Expansión</i></strong>
+					consiste en tomar todos los vértices del grafo y algunos de sus arcos tal que
+					 ese grafo continue siendo conexo (existe un camino sin ciclos entre dos nodos
+					 cualquiera).</p>
+        </section>
+
                 <section>
-                    <p>Dado un grafo <strong>conexo</strong>, <strong>no dirigido</strong> y 
-                    <strong>con pesos</strong> se debe seleccionar un subconjunto de arcos, 
-                    de tal manera que el grafo continue siendo conexo y que el peso total de 
+                    <p>Para un grafo <strong>conexo</strong>, <strong>no dirigido</strong> y
+                    <strong>con pesos</strong> se debe seleccionar un subconjunto de arcos,
+                    de tal manera que  y que el peso total de
                     todos los arcos seleccionados sea mínimo.</p>
                     <p>Para poder cumplir con este criterio de conectividad, se deben elegir los
                          <strong><i>V - 1</i></strong> arcos que formen el arbol que cubra(conecte) todos
                          los nodos <strong>V</strong> del grafo.
                     </p>
+                </section>
+								<section>
+                    <img src="img/ms1.gif" alt="">
                 </section>
                 <section>
                     <p>Un grafo puede tener más de un Arbol de Expansión Mínima con el <strong>mismo costo</strong>.</p>
@@ -58,13 +68,21 @@
                     <h3>Algoritmo de Kruskal</h3>
                 </section>
                 <section>
-                    <img src="img/kruskal.gif" alt="">
-                </section>
-                <section>
                     <ol>
-                        <li>Ordenar todos los arcos de menor a mayor peso.</li>
-                        <li>Tomar cada uno de los arcos ordenados y <strong>si no forma ciclo</strong> 
-                        añadirlo. (La detección de ciclos puede ser facilmente implementada a traves de Disjoint Sets )</li>
+                        <li>Ordenar todos los arcos de menor a mayor peso (implementar una <i>lista de arcos</i>)</li>
+                        <li>Tomar cada uno de los arcos ordenados y <strong>si no forma ciclo</strong>
+                        añadirlo al árbol.</li>
+                    </ol>
+                </section>
+								<section>
+										<img src="img/kruskal.gif" alt="" width="500px">
+								</section>
+								<section>
+                    <p><i>Un <strong>Disjoint Set</strong> sirve de gran ayuda en la detección de los ciclos de manera óptima.</i></p>
+										<ol>
+                        <li>Inicialmente, cada vértice es un conjunto</li>
+                        <li>Al agregar un nuevo arco, se verifica que los vértices de ese arco no hagan parte del mismo conjunto;
+													con esto detecto posibles ciclos al ir generando el árbol.</li>
                     </ol>
                 </section>
                 <section>
@@ -79,9 +97,9 @@
                 <section>
                     <ol>
                         <li>Procesar: Tomar un nodo inicial, marcarlo como visitado.</li>
-                        <li>Procesar: Añadir a la cola de prioridad todos sus arcos (omitiendo aquellos arcos cuyo 
+                        <li>Procesar: Añadir a la cola de prioridad todos sus arcos (omitiendo aquellos arcos cuyo
                             nodo destino ya haya sido visitado)</li>
-                        <li>Prim: Mientras que la cola de prioridad no se encuentre vacia, se evalua cada uno de 
+                        <li>Prim: Mientras que la cola de prioridad no se encuentre vacia, se evalua cada uno de
                             los arcos que se encuentran en ella.
                         </li>
                         <li>Prim: Si el nodo del arco que se esta evaluando no ha sido visitado aún, se elige este arco
@@ -108,9 +126,9 @@
                 </section>
                 <section>
                     <ul>
-                        <li>En grafos <strong>dispersos</strong> es conveniente usar el algoritmo de 
+                        <li>En grafos <strong>dispersos</strong> es conveniente usar el algoritmo de
                         <strong>Kruskal</strong></li>
-                        <li>En grafos <strong>densos</strong> es conveniente usar el algoritmo de 
+                        <li>En grafos <strong>densos</strong> es conveniente usar el algoritmo de
                         <strong>Prim</strong></li>
                     </ul>
                 </section>
@@ -124,11 +142,14 @@
                         <li>Minimum Spanning Forest</li>
                         <li>Second Best Spanning Tree</li>
                     </ul>
-                </section>        
-                <section>
+                </section>
+								<section>
+                    <img src="img/enough-talk-lets-code.jpg">
+                </section>
+                <!--section>
                     <h3>Ejercicios propuestos</h3>
                     <a href="https://a2oj.com/contest?ID=31888">UFPS - Week 8</a>
-                </section>
+                </section-->
 			</div>
 
 		</div>
