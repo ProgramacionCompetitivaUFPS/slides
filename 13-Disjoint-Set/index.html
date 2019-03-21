@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Disjoint Set</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="../assets/css/reveal.css">
+		<link rel="stylesheet" href="../assets/css/theme/ufps.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../assets/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../assets/css/print/pdf.css' : '../assets/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Disjoint Set</h2>
+				</section>
+
+        <section>
+					<p>- Mantiene una Colección de Conjuntos.<br>
+						 - Los conjuntos son Disjuntos (ningún elemento pertenece a más de un conjunto).<br> <br>
+						 Esta estructura nos permite realizar operaciones de búsqueda y union de manera eficiente.
+					</p>
+        </section>
+
+        <section>
+          <img src="img/ds1.jpeg" alt="" width="600px">
+					<p><i>También conocidos como <strong>Union Find</strong> o <strong>DSU</strong>.</i></p>
+        </section>
+
+        <section>
+          <h3>Estructura</h3>
+          <ul>
+            <li>Un elemento de cada conjunto es su <strong>representante</strong> (elemento raíz) y hay un camino de cualquier otro elemento de un conjunto a su representante.</li>
+            <li>2 elementos son parte del mismo conjunto si tienen el mismo representante.</li>
+            <li>2 conjuntos se pueden unir si se unen sus representantes.</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="img/ds2.jpg" alt="" width="500px">
+					<p><i><strong>1, 6 </strong>y<strong> 8</strong> son los representantes para cada conjunto.</i></p>
+        </section>
+
+				<section>
+          <img src="img/ds3.png" alt="" width="500px">
+					<p><i>El conjunto con representante <strong>4</strong> se une al conjunto con representante <strong>2</strong>.</i></p>
+        </section>
+
+        <section>
+          <p>La eficiencia del disjoint set depende de como se unen los conjuntos.</p>
+        </section>
+
+        <section>
+          <img src="img/ds3.png" alt="" width="500px">
+          <p><strong>Una estrategia: </strong>Conectar al representante del conjunto más pequeño al representante del conjunto más grande. La altura del nuevo conjunto será log(n).</p>
+        </section>
+
+				<section>
+					<h3>Implementación</h3>
+				</section>
+        <section>
+          <h3>Datos a manejar:</h3>
+          <ul>
+						  <li><strong>dsu[]: </strong>Almacena el representante de cada elemento.</li>
+							<li><strong>size[]: </strong>Almacena el size de los elementos representantes de cada conjunto.</li>
+							<li><strong>numDisjointSets: </strong>Almacena la cantidad de conjuntos disjuntos que existen.</li>
+          </ul>
+        </section>
+
+				<section>
+          <h3>Métodos a manejar:</h3>
+          <ul>
+						  <li><strong>find(data): </strong>Retorna el elemento representativo del conjunto al que pertenece data.</li>
+              <li><strong>union(e1, e2): </strong>Une el conjunto al que pertenece e1 con el conjunto al que pertence e2.</li>
+              <li><strong>sizeOfSet(data): </strong>Retorna la cantidad de elementos del conjunto al que pertenece data.</li>
+          </ul>
+        </section>
+
+        <section>
+          <a href="https://github.com/ProgramacionCompetitivaUFPS/notebook/blob/master/java/Data%20Structures/Disjoint%20Set.java">Implementación Disjoint Set</a>
+        </section>
+
+        <section>
+          <a href="https://visualgo.net/es/ufds">¿Cómo funciona?</a>
+        </section>
+
+        <!--section>
+        	<h3>Ejercicios propuestos</h3>
+        	<a href="http://programacioncompetitivaufps.github.io/ejercicios.html">http://programacioncompetitivaufps.github.io/ejercicios.html</a>
+        </section-->
+			</div>
+
+		</div>
+
+		<script src="../assets/lib/js/head.min.js"></script>
+		<script src="../assets/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../assets/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../assets/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../assets/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
