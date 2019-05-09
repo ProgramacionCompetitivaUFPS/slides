@@ -38,31 +38,56 @@
 
 		<div class="reveal">
 			<div class="slides">
-				<section>
+								<section>
                     <h3>SEGMENT TREE</h3>
-                    <p>RMQ</p>
+                </section>
+
+								<section>
+                    <h5>Range Queries</h5>
+										<ul>
+											<li>Fenwick Tree</li>
+											<li><b>Segment Tree</b></li>
+											<li>Sparse Table</li>
+										</ul>
                 </section>
 
                 <section>
-                    <p><i>En ciencias de la computación, un <b>Segment Tree</b> es una estructura de datos (arbol)
-                    diseñada para almacenar intervalos, o <b>segmentos</b></i>. El mayor beneficio de esta estructura
-                    es que permite solucionar <i>eficientemente</i> preguntas sobre intervalos dinámicos.</p>
+                    <p>En ciencias de la computación, un <b>Segment Tree</b> es una estructura de datos (arbol)
+											 que puede soportar dos operaciones: procesar consultas sobre rangos y actualizar el valor de un array.</p>
+										<p>Los segment Trees pueden soportar sumas sobre rangos, mínimos y máximos valores en un rango y otros tipos
+											 de consulta en tiempo O(log n).</p>
+											</p>
                 </section>
-                
+
+								<section>
+									<h3>Estructura</h3>
+									<p>Un segment tree es un árbol binario tal que los nodos del nivel más inferior (hojas del árbol) corresponde a
+										 los elementos del array, y los demás nodos contienen información necesaria para procesar consulta sobre rangos.</p>
+									<p>El árbol se construye recursivamente.</p>
+								</section>
+
+								<section>
+										<p><i>Consideren el siguiente array:</i></p>
+                    <img src="img/ej1.png" width="500px">
+                </section>
+
+								<section>
+										<p><i>Su correspondiente segment tree sería algo como esto (calcula sumas de rangos):</i></p>
+                    <img src="img/ej2.png" width="400px">
+                </section>
+
                 <section>
                     <h4>Range Minimum Query (RMQ) Problem</h4>
                     <p>Encontrar el indice del elemento más pequeño de un array en el rango [i..j]</p>
                 </section>
 
                 <section>
+										<p><i>Tenemos un array de números:</i></p>
                     <img src="img/rmq.png">
                 </section>
 
                 <section>
-                    <p>El árbol se construye de manera recursiva :)</p>
-                </section>
-
-                <section>
+										<p><i>Construyendo el segment Tree:</i></p>
                     <img src="img/st1.png">
                 </section>
 
@@ -77,9 +102,15 @@
                 <section>
                     <img src="img/st4.png">
                 </section>
-                
+
                 <section>
-                    <p>Solucionando queries... :3</p>
+                    <h3>Solucionando queries</h3>
+										<p><i>Hay que tener en cuenta 3 situaciones:</i></p>
+										<ol>
+											<li>El rango [L,R] correspondiente al nodo está fuera de la consulta que se quiere obtener (rango [i,j]).</li>
+											<li>El rango [L,R] correspondiente al nodo está parcialmente dentro de la consulta que se quiere obtener (rango [i,j]).</li>
+											<li>El rango [L,R] correspondiente al nodo está adentro de la consulta que se quiere obtener (rango [i,j]).</li>
+										</ol>
                 </section>
 
                 <section>
@@ -99,7 +130,8 @@
                 </section>
 
                 <section>
-                    <p>Pero... no solamente funciona con datos estáticos. Veamos que pasa cuando 
+										<!--h3>Para las actualizaciones:</h3-->
+                    <p>Pero... no solamente funciona con datos estáticos. Veamos que pasa cuando
                     necesitamos actualizar.</p>
                 </section>
 
@@ -119,12 +151,16 @@
                     <img src="img/st13.png">
                 </section>
 
+								<section>
+                    <img src="img/build.png" width="700px">
+                </section>
+
                 <section>
                     <p>Ahora vamos con el código :D</p>
                 </section>
 
                 <section>
-                    <p>Para construir nuestro Segment Tree de manera correcta debemos tener en cuenta que nos 
+                    <p>Para construir nuestro Segment Tree de manera correcta debemos tener en cuenta que nos
                     interesan las siguientes 3 funciones: </p>
                     <ul>
                         <li> Crear el Segment Tree</li>
@@ -246,7 +282,7 @@ private int update(int p, int L, int R, int idx, int new_value){
     int p1 = update( left(p), L, mid, idx, new_value);
     int p2 = update( right(p), mid + 1, R, idx, new_value);
 
-    st[p] = ( data[p1] < data[p2] ) ? p1 : p2; 
+    st[p] = ( data[p1] < data[p2] ) ? p1 : p2;
 }
                         </code>
                     </pre>
@@ -259,21 +295,47 @@ private int update(int p, int L, int R, int idx, int new_value){
 int[] A = new int[] { 18, 17, 13, 19, 15, 11, 20 };
 SegmentTree st = new SegmentTree(A);
 
-st.rmq(1,3); 
-st.update_point(5,100); 
+st.rmq(1,3);
+st.update_point(5,100);
                         </code>
                     </pre>
                 </section>
 
                 <section>
-                    <p>IMPORTANTE... Recuerden que podemos adaptar la estructura a lo 
+                    <p>IMPORTANTE... Recuerden que podemos adaptar la estructura a lo
                     que necesitemos :3</p>
                 </section>
-
-                <section>
-                    <p>¿Dudas?</p>
+								<section>
+                    <p>¿Dudas Hasta acá?</p>
                     <img src="img/meme.jpg">
                 </section>
+								<!--Nueva seccion-->
+								<!--
+								<section>
+                    <p>Pero ahora.... ¿Que sucede si un ejercicio pide consultas sobre rango[i,j],
+											 y también pide actualizaciones en el rango[i,j]?</p>
+                </section>
+
+								<section>
+                    <p>Hasta ahora, hemos visto que se pueden realizar actualizaciones sobre un unico valor en el array (en el rango [i,i]).</p>
+										<p>Para actualizaciones sobre rangos, simplemente se puede tomar cada índice que esté entre [i,j] y se
+											 actualiza  de la forma vista anteriormente. Osea (j-i+1 actualizaciones).</p>
+                </section>
+
+								<section>
+                    <p>Pero... ¿Que pasa si el ejercicio pide muchas actualizaciones sobre rangos muy grandes? la solución
+											anterior no sería tan óptima en tiempo de ejecución y normalmente daría TLE.</p>
+
+											<p><i>Aquí sería muy util utilizar un <strong>Lazy Propagation.</strong></i></p>
+                </section>
+
+								<section>
+										<h3>Lazy propagation</h3>
+										<p>Cuando se hacen muchas actualizaciones en diferentes rangos, se pueden posponer algunas actualizaciones
+										 (evitar las llamadas recursivas en la actualización), y hacen esas actualizaciones sólo cuando sea necesario.</p>
+										 <p>Usando Lazy Propagation, se puede construir un segment tree que soporta consultas y actualizaciones, ambas en tiempo O(log n).</p>
+								</section>
+							-->
 
                 <section>
                     <p><a href="https://visualgo.net/es/segmenttree">Ejemplo Gráfico</a></p>
